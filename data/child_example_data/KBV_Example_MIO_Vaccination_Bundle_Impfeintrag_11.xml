@@ -1,0 +1,290 @@
+<Bundle xmlns="http://hl7.org/fhir">
+    <id value="079bd487-07a2-4e86-98ac-205c83aa7abd" />
+    <meta>
+        <profile value="https://fhir.kbv.de/StructureDefinition/KBV_PR_MIO_Vaccination_Bundle_Entry|1.1.0" />
+    </meta>
+    <identifier>
+        <system value="urn:ietf:rfc:3986"/>
+        <value value="urn:uuid:079bd487-07a2-4e86-98ac-205c83aa7abd"/>
+    </identifier>
+    <type value ="document"/>
+    <timestamp value="2015-11-25T16:00:02Z"/>
+    <entry>
+        <fullUrl value ="urn:uuid:1c4b9522-d2c6-4ef7-b2ac-ee4ff7669387"/>
+        <resource>
+            <Composition>
+                <id value="1c4b9522-d2c6-4ef7-b2ac-ee4ff7669387" />
+                <meta>
+                    <profile value="https://fhir.kbv.de/StructureDefinition/KBV_PR_MIO_Vaccination_Composition_Prime|1.1.0" />
+                </meta>
+                <text>
+                    <status value ="extensions"/>
+                    <div xmlns="http://www.w3.org/1999/xhtml">
+                        <h1>Composition</h1>
+                    </div>
+                </text>
+                <status value ="final"/>
+                <type>
+                    <coding>
+                        <system value="http://loinc.org" />
+                        <code value="11369-6" />
+                        <display value="History of Immunization Narrative"/>
+                    </coding>
+                </type>
+                <subject>
+                    <reference value ="urn:uuid:79e2c455-d1ed-4b97-b817-de555fdcf8df"/>
+                </subject>
+                <date value="2015-11-25"/>
+                <author>
+                    <reference value="urn:uuid:70a8c19d-44f4-4618-92c0-b21334c55711"/>
+                </author>
+                <title value="Impfass"/>
+                <section>
+                    <code>
+                        <coding>
+                            <system value="http://snomed.info/sct" />
+                            <version value="http://snomed.info/sct/900000000000207008/version/20210131" />
+                            <code value="713404003" />
+                            <display value="Vaccination given (situation)"/>
+                        </coding>
+                    </code>
+                    <entry>
+                        <reference value ="urn:uuid:6cd21ccd-9dd0-4ffd-b962-240e64431852"/>
+                    </entry>
+                </section>
+            </Composition>
+        </resource>
+    </entry>
+    <entry>
+        <fullUrl value="urn:uuid:2207e25e-4e61-4f0d-b8e6-473ec65ca92f"/>
+        <resource>
+            <Organization>
+                <id value="2207e25e-4e61-4f0d-b8e6-473ec65ca92f" />
+                <meta>
+                    <profile value="https://fhir.kbv.de/StructureDefinition/KBV_PR_MIO_Vaccination_Organization|1.1.0" />
+                </meta>
+                <name value="Praxis Dr. Edgar Schulz" />
+                <address>
+                    <type value="both" />
+                    <line value="Wladimir-Wiese-Straße 9/8">
+                        <extension url="http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber">
+                            <valueString value="9/8" />
+                        </extension>
+                        <extension url="http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName">
+                            <valueString value="Wladimir-Wiese-Straße" />
+                        </extension>
+                    </line>
+                    <city value="Viersen" />
+                    <postalCode value="37220" />
+                    <country value="D" />
+                </address>
+            </Organization>
+        </resource>
+    </entry>
+    <entry>
+        <fullUrl value="urn:uuid:6cd21ccd-9dd0-4ffd-b962-240e64431852"/>
+        <resource>
+            <Immunization>
+                <id value="6cd21ccd-9dd0-4ffd-b962-240e64431852"/>
+                <meta>
+                    <profile value="https://fhir.kbv.de/StructureDefinition/KBV_PR_MIO_Vaccination_Record_Prime|1.1.0"/>
+                </meta>
+                <text>
+                    <status value="extensions"/>
+                    <div xmlns="http://www.w3.org/1999/xhtml">
+                    <h1>Meningokokken-Injektion</h1>
+                    </div>
+                </text>
+                <extension url ="https://fhir.kbv.de/StructureDefinition/KBV_EX_MIO_Vaccination_Entry_Type">
+                    <valueCodeableConcept>
+                        <coding>
+                            <system value ="https://fhir.kbv.de/CodeSystem/KBV_CS_MIO_Vaccination_Technical_Entry_Type"/>
+                            <code value ="Eduii"/>
+                            <display value ="Eintrag digital und im Impfausweis"/>
+                        </coding>
+                    </valueCodeableConcept>
+                </extension>
+                <extension url = "https://fhir.kbv.de/StructureDefinition/KBV_EX_MIO_Vaccination_Attester">
+                    <extension url= "mode">
+                        <valueCodeableConcept>
+                            <coding>
+                                <system value ="http://hl7.org/fhir/composition-attestation-mode"/>
+                                <code value ="legal"/>
+                            </coding>
+                        </valueCodeableConcept>
+                    </extension>
+                    <extension url ="party">
+                        <valueReference>
+                            <reference value ="urn:uuid:70a8c19d-44f4-4618-92c0-b21334c55711"/>
+                        </valueReference>
+                    </extension>
+                </extension>
+                <status value="completed"/>
+                <vaccineCode>
+                    <coding>
+                        <system value ="http://snomed.info/sct"/>
+                        <version value="http://snomed.info/sct/900000000000207008/version/20210131" />
+                        <code value ="836401009"/>
+                        <display value ="Vaccine product containing Neisseria meningitidis antigen (medicinal product)">
+                            <extension url ="https://fhir.kbv.de/StructureDefinition/KBV_EX_Base_Terminology_German">
+                                <extension url ="content">
+                                    <valueString value ="Meningokokkenimpfstoff"/>
+                                </extension>
+                            </extension>
+                        </display>         
+                    </coding>
+                    <coding>
+                        <system value ="http://fhir.de/CodeSystem/dimdi/atc"/>
+                        <version value="atcgm2021" />
+                        <code value ="J07AH"/>
+                        <display value ="Meningokokken-Impfstoffe"/>
+                    </coding>
+                    <coding>
+                        <system value ="http://fhir.de/CodeSystem/ifa/pzn"/>
+                        <code value ="09461122"/>
+                        <display value ="BEXSERO®"/>
+                    </coding>
+                    <text value ="BEXSERO®"/>
+                </vaccineCode>
+                <patient>
+                    <reference value ="urn:uuid:79e2c455-d1ed-4b97-b817-de555fdcf8df"/>
+                </patient>
+                <occurrenceDateTime value ="2015-11-25"/>
+                <primarySource value ="true"/>
+                <manufacturer>
+                    <display value ="GlaxoSmithKline GmbH &amp; Co. KG"/>
+                </manufacturer>
+                <lotNumber value ="235824"/>
+                <note> 
+                    <text value ="Bei einer ungewöhnlichen Impfreaktion sollte die impfende ärztliche Person benachrichtigt werden. Die ärztlich tätige Person hat, wenn der Verdacht einer gesundheitlichen Schädigung besteht, die über das übliche Ausmaß einer Impfreaktion hinaus geht verpflichtet, den Verdacht dem zuständigen Gesundheitsamt namentlich zu melden (§ 6 Absatz 1 Nr 3 des lnfektionsschutzgesetzes • lfSG) Im Falle eines Impfschadens besteht unter den Voraussetzungen des § 60 Absatz 1 lfSG ein Anspruch auf Entschädigung in entsprechender Anwendung der Vorschriften des Bundesversorgungsgesetzes. Der Antrag ist bei der für die Durchführung des Bundesversorgungsgesetzes zuständigen Behörde (§ 64 Absatz 1 lfSG, i.d.R. 'Versorgungsamt') zu stellen. Weitere Auskünfte erteilt das zuständige Gesundheitsamt."/> 
+                </note>
+                <note>
+                    <text value="Gegen Meningokokken Typ B"/>
+                </note>
+                <protocolApplied>
+                    <targetDisease>
+                        <coding>
+                            <system value ="http://snomed.info/sct"/>
+                            <version value="http://snomed.info/sct/900000000000207008/version/20210131" />
+                            <code value ="23511006"/>
+                            <display value ="Meningococcal infectious disease (disorder)">
+                                <extension url ="https://fhir.kbv.de/StructureDefinition/KBV_EX_Base_Terminology_German">
+                                    <extension url ="content">
+                                        <valueString value ="Meningokokken-Infektion"/>
+                                    </extension>
+                                </extension>
+                            </display>         
+                        </coding>
+                    </targetDisease>
+                    <doseNumberString>
+                        <extension url ="http://hl7.org/fhir/StructureDefinition/data-absent-reason">
+                            <valueCode value ="unknown"/>
+                        </extension>
+                    </doseNumberString>
+                </protocolApplied>
+            </Immunization>
+        </resource>
+    </entry>
+    <entry>
+        <fullUrl value ="urn:uuid:79e2c455-d1ed-4b97-b817-de555fdcf8df"/>
+        <resource>
+            <Patient xmlns="http://hl7.org/fhir">
+                <id value="79e2c455-d1ed-4b97-b817-de555fdcf8df" />
+                <meta>
+                    <profile value="https://fhir.kbv.de/StructureDefinition/KBV_PR_MIO_Vaccination_Patient|1.1.0" />
+                </meta>
+                <identifier>
+                    <type>
+                        <coding>
+                            <system value="http://fhir.de/CodeSystem/identifier-type-de-basis" />
+                            <code value="GKV" />
+                            <display value ="Gesetzliche Krankenversicherung"/>
+                        </coding>
+                    </type>
+                    <system value="http://fhir.de/NamingSystem/gkv/kvid-10" />
+                    <value value="B783522772" />
+                </identifier>
+                <name>
+                <use value="official" />
+                    <text value="Wiebke Metzger" />
+                    <family value="Metzger">
+                        <extension url="http://hl7.org/fhir/StructureDefinition/humanname-own-name">
+                            <valueString value="Metzger" />
+                        </extension>
+                    </family>
+                    <given value="Wiebke" />
+                </name>
+                <gender value="female" />
+                <birthDate value="2014-02-17" />
+            </Patient>
+        </resource>
+    </entry>
+    <entry>
+        <fullUrl value="urn:uuid:4b89e12d-4f07-44a8-9c4d-a800cd461403"/>
+        <resource>
+            <Practitioner>
+                <id value="4b89e12d-4f07-44a8-9c4d-a800cd461403" />
+                <meta>
+                    <profile value="https://fhir.kbv.de/StructureDefinition/KBV_PR_MIO_Vaccination_Practitioner|1.1.0" />
+                </meta>
+                <extension url="https://fhir.kbv.de/StructureDefinition/KBV_EX_Base_Additional_Comment">
+                <valueString value="Behandelnder Arzt" />
+                </extension>
+                <identifier>
+                <type>
+                    <coding>
+                    <system value="http://terminology.hl7.org/CodeSystem/v2-0203" />
+                    <code value="LANR" />
+                    </coding>
+                </type>
+                <system value="https://fhir.kbv.de/NamingSystem/KBV_NS_Base_ANR" />
+                <value value="520886234" />
+                </identifier>
+                <name>
+                <use value="official" />
+                <family value="Schulz">
+                    <extension url="http://hl7.org/fhir/StructureDefinition/humanname-own-name">
+                    <valueString value="Schulz" />
+                    </extension>
+                </family>
+                <given value="Edgar" />
+                <prefix value="Dr.">
+                    <extension url="http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier">
+                    <valueCode value="AC" />
+                    </extension>
+                </prefix>
+                </name>
+                <telecom>
+                <system value="phone" />
+                <value value="+49(0)9853111893" />
+                </telecom>
+            <qualification>
+                <code>
+                    <coding>
+                    <system value="https://fhir.kbv.de/CodeSystem/KBV_CS_SFHIR_BAR2_WBO" />
+                    <code value="341" />
+                    <display value="FA Kinder- und Jugendmedizin"/>
+                    </coding>
+                </code>
+                </qualification>
+            </Practitioner>
+        </resource>
+    </entry>
+    <entry>
+        <fullUrl value="urn:uuid:70a8c19d-44f4-4618-92c0-b21334c55711"/>
+        <resource>
+            <PractitionerRole>
+                <id value="70a8c19d-44f4-4618-92c0-b21334c55711" />
+                <meta>
+                    <profile value="https://fhir.kbv.de/StructureDefinition/KBV_PR_MIO_Vaccination_Practitionerrole|1.1.0" />
+                </meta>
+                <practitioner>
+                    <reference value="urn:uuid:4b89e12d-4f07-44a8-9c4d-a800cd461403" />
+                </practitioner>
+                <organization>
+                    <reference value="urn:uuid:2207e25e-4e61-4f0d-b8e6-473ec65ca92f" />
+                </organization>
+                </PractitionerRole>
+        </resource>
+    </entry>
+</Bundle>

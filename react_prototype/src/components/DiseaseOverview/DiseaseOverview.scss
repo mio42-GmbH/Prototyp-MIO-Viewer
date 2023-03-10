@@ -1,0 +1,41 @@
+.condition-table td, .condition-table th {
+    border: none;
+    box-shadow: none;
+}
+
+.condition-table th {
+    // font-family: 'Nunito Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #64748B;
+}
+
+.condition-table thead {
+    border-bottom: 1px solid #CFD7E2;
+}
+
+.text-bottom {
+    display: flex;
+    align-items: flex-end;
+}
+
+.sort-icon-container {
+    margin-left: 4px;
+    margin-bottom: 3px;
+    height: 10px;
+}
+
+.sort-icon-container img {
+    height: 3.5px;
+}
+
+.condition-table tbody tr:hover {
+    background: #EFF8FC;
+}
+
+.condition-table tbody tr.selected {
+    background: #EFF8FC;
+    font-weight: bold;
+}
