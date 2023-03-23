@@ -5,7 +5,14 @@ export default {
   title: 'DiseaseOverview',
 }
 
-export const Default = () => <DiseaseOverview toggleShowDetails={() => console.log('test')} diseaseOverview={[]} />
+export const Default = () => (
+  <DiseaseOverview
+    selectedDisease=""
+    setSelectedDisease={() => console.log('test')}
+    toggleShowDetails={() => console.log('test')}
+    diseaseOverview={[]}
+  />
+)
 
 Default.story = {
   name: 'default',

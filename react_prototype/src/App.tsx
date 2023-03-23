@@ -19,6 +19,7 @@ import { ReactComponent as FilterLogo } from './assets/icons/filter.svg'
 function App() {
   const [dataLoaded, setDataLoaded] = useState(false)
   const [showDetails, setShowDetails] = useState(false)
+  const [selectedDisease, setSelectedDisease] = useState('')
   const [patient, setPatient] = useState<Vaccination.V1_1_0.Profile.Patient | undefined>(undefined)
   const [records, setRecords] = useState<
     (
@@ -67,15 +68,20 @@ function App() {
             </div>
             <div className="d-flex gap-3 align-items-start ">
               <DiseaseOverview
-                toggleShowDetails={() => setShowDetails(true)}
                 diseaseOverview={diseaseOverview}
+                selectedDisease={selectedDisease}
+                setSelectedDisease={setSelectedDisease}
+                toggleShowDetails={() => setShowDetails(true)}
               ></DiseaseOverview>
               {showDetails && (
                 <div style={{ minWidth: '490px' }}>
                   <DiseaseDetails
-                    toggleShowDetails={() => setShowDetails(false)}
                     practitionerEntries={practitionerEntries}
                     records={records}
+                    toggleShowDetails={() => {
+                      setShowDetails(false)
+                      setSelectedDisease('')
+                    }}
                   ></DiseaseDetails>
                 </div>
               )}

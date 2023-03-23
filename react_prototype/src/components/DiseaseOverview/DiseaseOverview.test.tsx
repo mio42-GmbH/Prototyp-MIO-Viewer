@@ -5,7 +5,14 @@ import DiseaseOverview from './DiseaseOverview'
 
 describe('<DiseaseOverview />', () => {
   test('it should mount', () => {
-    render(<DiseaseOverview toggleShowDetails={() => console.log('test')} diseaseOverview={[]} />)
+    render(
+      <DiseaseOverview
+        selectedDisease=""
+        setSelectedDisease={() => console.log('test')}
+        toggleShowDetails={() => console.log('test')}
+        diseaseOverview={[]}
+      />,
+    )
 
     const diseaseOverview = screen.getByTestId('DiseaseOverview')
 

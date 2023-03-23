@@ -14,6 +14,8 @@ interface DiseaseOverviewProps {
     lastRecord: string
     recordCount: number
   }[]
+  selectedDisease: string
+  setSelectedDisease: React.Dispatch<React.SetStateAction<string>>
   toggleShowDetails: () => void
 }
 
@@ -21,7 +23,6 @@ const DiseaseOverview: FC<DiseaseOverviewProps> = (props: DiseaseOverviewProps) 
   const [sortMode, setSortMode] = useState('lastRecord')
   const [sortModeReversed, setSortModeReversed] = useState(false)
   const [diseaseOverview, setDiseaseOverview] = useState(props.diseaseOverview)
-  const [selectedDisease, setSelectedDisease] = useState('')
 
   const getDropdownIcon = (column: string) => {
     if (column === sortMode && sortModeReversed) {
@@ -102,11 +103,11 @@ const DiseaseOverview: FC<DiseaseOverviewProps> = (props: DiseaseOverviewProps) 
             <tbody>
               {diseaseOverview.map((disease) => (
                 <tr
-                  className={disease.targetDisease === selectedDisease ? 'selected' : ''}
+                  className={disease.targetDisease === props.selectedDisease ? 'selected' : ''}
                   role="button"
                   key={disease.targetDisease}
                   onClick={() => {
-                    setSelectedDisease(disease.targetDisease)
+                    props.setSelectedDisease(disease.targetDisease)
                     props.toggleShowDetails()
                   }}
                 >
