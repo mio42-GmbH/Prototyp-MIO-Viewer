@@ -4,6 +4,10 @@ import { Vaccination } from '@kbv/mioparser'
 import './ConditionEntry.scss'
 import Information from '../Information/Information'
 import InformationHeading from '../InformationHeading/InformationHeading'
+import { ReactComponent as IllnessLogo } from '../../assets/icons/illness.svg'
+import { ReactComponent as InfoLogo } from '../../assets/icons/info_grey.svg'
+import { ReactComponent as ChevronUpLogo } from '../../assets/icons/chevron_up.svg'
+import { ReactComponent as ChevronDownLogo } from '../../assets/icons/chevron_down.svg'
 
 interface ConditionEntryProps {
   condition: Vaccination.V1_1_0.Profile.Condition
@@ -19,7 +23,7 @@ const ConditionEntry: FC<ConditionEntryProps> = (props: ConditionEntryProps) => 
         <Row>
           <Col xs={2} className="align-items-center ps-4">
             <div className="icon-backdrop condition d-flex align-items-center justify-content-center">
-              <img className="h-50" src="/assets/icons/illness.svg" alt="Symbol für eine Erkrankung"></img>
+              <IllnessLogo className="h-50" />
             </div>
           </Col>
           <Col xs={4}>
@@ -29,7 +33,7 @@ const ConditionEntry: FC<ConditionEntryProps> = (props: ConditionEntryProps) => 
             <Row>
               <div className="d-flex align-items-center gap-2">
                 <Information text={'Zeitraum: TODO'} />
-                <img role="button" src="/assets/icons/info_grey.svg" alt="Info"></img>
+                <InfoLogo role="button" />
               </div>
             </Row>
           </Col>
@@ -37,8 +41,8 @@ const ConditionEntry: FC<ConditionEntryProps> = (props: ConditionEntryProps) => 
           <Col>
             <div role="button" onClick={() => toggleEntryExpanded()} aria-expanded={entryExpanded} className="d-flex">
               <span>Details</span>
-              {!entryExpanded && <img src="/assets/icons/chevron_down.svg" alt="Pfeil nach unten"></img>}
-              {entryExpanded && <img src="/assets/icons/chevron_up.svg" alt="Pfeil nach oben"></img>}
+              {!entryExpanded && <ChevronDownLogo />}
+              {entryExpanded && <ChevronUpLogo />}
             </div>
           </Col>
         </Row>

@@ -6,6 +6,10 @@ import Information from '../Information/Information'
 import InformationHeading from '../InformationHeading/InformationHeading'
 import PractitionerModal from '../PractitionerModal/PractitionerModal'
 import { getVaccinationDisplay, getPractitionerName } from '../../services/mioParser'
+import { ReactComponent as VaccineLogo } from '../../assets/icons/vaccine.svg'
+import { ReactComponent as ChevronUpLogo } from '../../assets/icons/chevron_up.svg'
+import { ReactComponent as ChevronDownLogo } from '../../assets/icons/chevron_down.svg'
+import { ReactComponent as NoteLogo } from '../../assets/icons/note.svg'
 
 interface VaccinationEntryProps {
   vaccination: Vaccination.V1_1_0.Profile.RecordPrime | Vaccination.V1_1_0.Profile.RecordAddendum
@@ -30,7 +34,7 @@ const VaccinationEntry: FC<VaccinationEntryProps> = (props: VaccinationEntryProp
         <Row>
           <Col xs={2} className="align-items-center ps-4">
             <div className="icon-backdrop vaccination d-flex align-items-center justify-content-center">
-              <img className="h-50" src="/assets/icons/vaccine.svg" alt="Symbol für eine Impfung"></img>
+              <VaccineLogo className="h-50" />
             </div>
           </Col>
           <Col xs={3}>
@@ -56,8 +60,8 @@ const VaccinationEntry: FC<VaccinationEntryProps> = (props: VaccinationEntryProp
             <div role="button" onClick={() => toggleEntryExpanded()} aria-expanded={entryExpanded}>
               <div className="d-flex">
                 <span>Details</span>
-                {!entryExpanded && <img src="/assets/icons/chevron_down.svg" alt="Pfeil nach unten"></img>}
-                {entryExpanded && <img src="/assets/icons/chevron_up.svg" alt="Pfeil nach oben"></img>}
+                {!entryExpanded && <ChevronDownLogo />}
+                {entryExpanded && <ChevronUpLogo />}
               </div>
               {props.vaccination.note && props.vaccination.note[1] && props.vaccination.note[1].text && (
                 <Information text={'Anmerkung'} />
@@ -88,7 +92,7 @@ const VaccinationEntry: FC<VaccinationEntryProps> = (props: VaccinationEntryProp
                   <Col xs={2}></Col>
                   <Col>
                     <div className="note-box">
-                      <img src="/assets/icons/note.svg" alt="Anmerkung"></img>
+                      <NoteLogo />
                       <Information text={props.vaccination.note[1].text} />
                     </div>
                   </Col>

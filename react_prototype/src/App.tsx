@@ -13,6 +13,8 @@ import {
 import DiseaseOverview from './components/DiseaseOverview/DiseaseOverview'
 import DiseaseDetails from './components/DiseaseDetails/DiseaseDetails'
 import { Container } from 'react-bootstrap'
+import { ReactComponent as SearchLogo } from './assets/icons/search.svg'
+import { ReactComponent as FilterLogo } from './assets/icons/filter.svg'
 
 function App() {
   const [dataLoaded, setDataLoaded] = useState(false)
@@ -60,8 +62,8 @@ function App() {
           <VaccinationPassHeader patient={patient} />
           <Container className="mb-4">
             <div className="filter-bar d-flex align-items-center justify-content-end gap-4">
-              <img src="/assets/icons/search.svg" alt="Suche"></img>
-              <img src="/assets/icons/filter.svg" alt="Filter"></img>
+              <SearchLogo />
+              <FilterLogo />
             </div>
             <div className="d-flex gap-3 align-items-start ">
               <DiseaseOverview

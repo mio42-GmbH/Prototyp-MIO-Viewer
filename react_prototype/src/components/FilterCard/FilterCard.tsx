@@ -3,13 +3,14 @@ import { Button } from 'react-bootstrap'
 import Information from '../Information/Information'
 import InformationHeading from '../InformationHeading/InformationHeading'
 import './FilterCard.scss'
+import { ReactComponent as CloseLogo } from '../../assets/icons/close_cross.svg'
 
 // interface FilterCardProps {}
 
 const FilterCard: FC = () => (
   <div className="FilterCard p-3 d-flex flex-column gap-3" data-testid="FilterCard">
     <div role="button" className="d-flex gap-1">
-      <img src="/assets/icons/close_cross.svg" alt="Cross"></img>
+      <CloseLogo />
       <Information text={'Zurücksetzen'} />
     </div>
     <div className="d-flex flex-column">

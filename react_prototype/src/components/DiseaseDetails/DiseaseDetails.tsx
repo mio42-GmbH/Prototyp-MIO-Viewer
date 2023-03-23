@@ -5,6 +5,7 @@ import { getAttesterUUID, getPractitionerByUUID } from '../../services/mioParser
 import ConditionEntry from '../ConditionEntry/ConditionEntry'
 import VaccinationEntry from '../VaccinationEntry/VaccinationEntry'
 import './DiseaseDetails.scss'
+import { ReactComponent as CloseLogo } from '../../assets/icons/close_cross.svg'
 
 interface DiseaseDetailsProps {
   records: (
@@ -25,12 +26,7 @@ const DiseaseDetails: FC<DiseaseDetailsProps> = (props: DiseaseDetailsProps) => 
       <Card.Body>
         <div className="d-flex justify-content-between">
           <Card.Title>Card Title</Card.Title>
-          <img
-            role="button"
-            onClick={() => props.toggleShowDetails()}
-            src="/assets/icons/close_cross.svg"
-            alt="Schließen"
-          ></img>
+          <CloseLogo role="button" onClick={() => props.toggleShowDetails()} />
         </div>
         {props.records.map((record, index) => {
           if (!Vaccination.V1_1_0.Profile.Condition.is(record)) {

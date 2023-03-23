@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { FC } from 'react'
 import './VaccinationPassHeader.scss'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import { Collapse, Container, Dropdown, Placeholder } from 'react-bootstrap'
+import { Container, Dropdown, Placeholder } from 'react-bootstrap'
 import { Vaccination } from '@kbv/mioparser'
-import { getFullName, getBirthName, getBirthDate, getGkv } from '../../services/mioParser'
+import { getFullName, getBirthDate, getGkv } from '../../services/mioParser'
 import FilterCard from '../FilterCard/FilterCard'
+import { ReactComponent as MenuLogo } from '../../assets/icons/menu.svg'
+import { ReactComponent as AppLogo } from '../../assets/Logo_Impfpass.svg'
 
 interface VaccinationPassHeaderProps {
   patient: Vaccination.V1_1_0.Profile.Patient | undefined
@@ -14,18 +16,16 @@ interface VaccinationPassHeaderProps {
 
 type CustomToggleProps = {
   children?: React.ReactNode
-  onClick?: (event: React.MouseEvent<HTMLImageElement, MouseEvent>) => unknown
+  onClick?: (event: React.MouseEvent<SVGSVGElement, MouseEvent>) => unknown
 }
 
 const FilterDropDownToggle = React.forwardRef(function CustomToggle(
   props: CustomToggleProps,
-  ref: React.Ref<HTMLImageElement>,
+  ref: React.Ref<SVGSVGElement>,
 ) {
   return (
-    <img
+    <MenuLogo
       role="button"
-      src="/assets/icons/menu.svg"
-      alt="Menü"
       ref={ref}
       onClick={(e) => {
         e.preventDefault()
@@ -33,7 +33,7 @@ const FilterDropDownToggle = React.forwardRef(function CustomToggle(
           props.onClick(e)
         }
       }}
-    ></img>
+    />
   )
 })
 
@@ -70,15 +70,13 @@ const calculateAge = (birthDateString: string) => {
 }
 
 const VaccinationPassHeader: FC<VaccinationPassHeaderProps> = (props: VaccinationPassHeaderProps) => {
-  const [headerExpanded, setHeaderExpanded] = useState(false)
-
   // This is a simplified version of the component with placeholders.
   // It should be displayed if there is no patient data.
   if (!props.patient) {
     return (
       <Row className="p-4 m-0 bg-white VaccinationPassHeader">
         <Col xs={2} className="p-0">
-          <img src="/assets/Logo_Impfpass.svg" alt="Der Digitale Impfpass - Logo"></img>
+          <AppLogo className="logo" />
         </Col>
         <Col>
           <Row>
@@ -98,14 +96,13 @@ const VaccinationPassHeader: FC<VaccinationPassHeaderProps> = (props: Vaccinatio
   }
 
   const fullName = getFullName(props.patient)
-  const birthName = getBirthName(props.patient)
   const birthDate = getBirthDate(props.patient)
   const age = calculateAge(birthDate)
   const gkv = getGkv(props.patient)
 
   return (
     <div className="pt-4 pb-3 w-100 bg-white VaccinationPassHeader">
-      <img className="logo" src="/assets/Logo_Impfpass.svg" alt="Der Digitale Impfpass - Logo"></img>
+      <AppLogo className="logo" />
       <Container className="d-flex justify-content-between align-items-end">
         <div>
           <Row>
@@ -117,53 +114,8 @@ const VaccinationPassHeader: FC<VaccinationPassHeaderProps> = (props: Vaccinatio
                 Geburtsdatum: {birthDate} ({age} Jahre)
               </span>
               <span className="ms-3">Versichertennummer: {gkv}</span>
-              <div className="ms-2">
-                {!headerExpanded && (
-                  <img
-                    src="/assets/icons/chevron_down.svg"
-                    alt="Pfeil nach unten"
-                    role="button"
-                    onClick={() => setHeaderExpanded(true)}
-                    aria-controls="collapse-row"
-                    aria-expanded={headerExpanded}
-                  ></img>
-                )}
-                {headerExpanded && (
-                  <img
-                    src="/assets/icons/chevron_up.svg"
-                    alt="Pfeil nach oben"
-                    role="button"
-                    onClick={() => setHeaderExpanded(false)}
-                    aria-controls="collapse-row"
-                    aria-expanded={headerExpanded}
-                  ></img>
-                )}
-              </div>
             </Col>
           </Row>
-          <Collapse in={headerExpanded}>
-            <Row id="collapse-row">
-              <Col style={{ flex: 0 }}>
-                <Row>
-                  <span>Geburtsname</span>
-                </Row>
-                <Row>
-                  <span>{birthName}</span>
-                </Row>
-              </Col>
-              <Col className="d-flex align-items-center">
-                <div className="me-3 vertical-line table-separator"></div>
-                <Col>
-                  <Row>
-                    <span>Geschlecht</span>
-                  </Row>
-                  <Row>
-                    <span>{props.patient.gender || '-'}</span>
-                  </Row>
-                </Col>
-              </Col>
-            </Row>
-          </Collapse>
         </div>
         <Dropdown autoClose={true}>
           <Dropdown.Toggle as={FilterDropDownToggle}></Dropdown.Toggle>

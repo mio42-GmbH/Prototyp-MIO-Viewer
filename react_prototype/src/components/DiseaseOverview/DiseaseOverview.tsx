@@ -3,6 +3,10 @@ import './DiseaseOverview.scss'
 
 import Table from 'react-bootstrap/Table'
 import { Card } from 'react-bootstrap'
+import { ReactComponent as ArrowUpActiveLogo } from '../../assets/icons/arrow_drop_up_active.svg'
+import { ReactComponent as ArrowUpInactiveLogo } from '../../assets/icons/arrow_drop_up_inactive.svg'
+import { ReactComponent as ArrowDownActiveLogo } from '../../assets/icons/arrow_drop_down_active.svg'
+import { ReactComponent as ArrowDownInactiveLogo } from '../../assets/icons/arrow_drop_down_inactive.svg'
 
 interface DiseaseOverviewProps {
   diseaseOverview: {
@@ -23,23 +27,23 @@ const DiseaseOverview: FC<DiseaseOverviewProps> = (props: DiseaseOverviewProps) 
     if (column === sortMode && sortModeReversed) {
       return (
         <div className="d-flex flex-column sort-icon-container justify-content-between">
-          <img src="/assets/icons/arrow_drop_up_active.svg" alt="Pfeil nach oben"></img>
-          <img src="/assets/icons/arrow_drop_down_inactive.svg" alt="Pfeil nach unten"></img>
+          <ArrowUpActiveLogo />
+          <ArrowDownInactiveLogo />
         </div>
       )
     }
     if (column === sortMode && !sortModeReversed) {
       return (
         <div className="d-flex flex-column sort-icon-container justify-content-between">
-          <img src="/assets/icons/arrow_drop_up_inactive.svg" alt="Pfeil nach oben"></img>
-          <img src="/assets/icons/arrow_drop_down_active.svg" alt="Pfeil nach unten"></img>
+          <ArrowUpInactiveLogo />
+          <ArrowDownActiveLogo />
         </div>
       )
     }
     return (
       <div className="d-flex flex-column sort-icon-container justify-content-between">
-        <img src="/assets/icons/arrow_drop_up_inactive.svg" alt="Pfeil nach oben"></img>
-        <img src="/assets/icons/arrow_drop_down_inactive.svg" alt="Pfeil nach unten"></img>
+        <ArrowUpInactiveLogo />
+        <ArrowDownInactiveLogo />
       </div>
     )
   }
