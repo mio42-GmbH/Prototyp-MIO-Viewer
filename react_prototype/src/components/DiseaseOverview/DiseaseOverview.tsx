@@ -112,7 +112,13 @@ const DiseaseOverview: FC<DiseaseOverviewProps> = (props: DiseaseOverviewProps) 
                   }}
                 >
                   <td className="col-4">{disease.targetDisease}</td>
-                  <td className="col-2">{new Date(disease.lastRecord).toLocaleDateString()}</td>
+                  <td className="col-2">
+                    {new Date(disease.lastRecord).toLocaleDateString('de-DE', {
+                      year: 'numeric',
+                      month: '2-digit',
+                      day: '2-digit',
+                    })}
+                  </td>
                   <td className="col-2">{disease.recordCount}</td>
                 </tr>
               ))}

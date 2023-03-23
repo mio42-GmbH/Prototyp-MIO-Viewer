@@ -45,7 +45,11 @@ const VaccinationEntry: FC<VaccinationEntryProps> = (props: VaccinationEntryProp
               <Information
                 text={
                   (props.vaccination.occurrenceDateTime &&
-                    new Date(props.vaccination.occurrenceDateTime).toLocaleDateString()) ||
+                    new Date(props.vaccination.occurrenceDateTime).toLocaleDateString('de-DE', {
+                      year: 'numeric',
+                      month: '2-digit',
+                      day: '2-digit',
+                    })) ||
                   '-'
                 }
               />

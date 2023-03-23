@@ -115,7 +115,11 @@ export const getBirthDate = (patient: Vaccination.V1_1_0.Profile.Patient) => {
   if (!patient.birthDate) {
     return '-'
   }
-  return new Date(patient.birthDate).toLocaleDateString()
+  return new Date(patient.birthDate).toLocaleDateString('de-DE', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  })
 }
 
 export const getGkv = (patient: Vaccination.V1_1_0.Profile.Patient) => {

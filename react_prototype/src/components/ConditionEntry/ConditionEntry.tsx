@@ -54,7 +54,13 @@ const ConditionEntry: FC<ConditionEntryProps> = (props: ConditionEntryProps) => 
                 <Col xs={3}>
                   <InformationHeading text="Dokumentiert am" />
                   <br></br>
-                  <Information text={new Date(props.condition.recordedDate).toLocaleDateString()} />
+                  <Information
+                    text={new Date(props.condition.recordedDate).toLocaleDateString('de-DE', {
+                      year: 'numeric',
+                      month: '2-digit',
+                      day: '2-digit',
+                    })}
+                  />
                 </Col>
                 <Col>
                   <InformationHeading text="Quelle der Information" />
