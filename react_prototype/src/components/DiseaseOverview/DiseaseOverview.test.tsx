@@ -8,7 +8,7 @@ describe('<DiseaseOverview />', () => {
     render(
       <DiseaseOverview
         selectedDisease=""
-        setSelectedDisease={() => console.log('test')}
+        setSelectedDisease={(test: string) => console.log('test')}
         toggleShowDetails={() => console.log('test')}
         diseaseOverview={[]}
       />,

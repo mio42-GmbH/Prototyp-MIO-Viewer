@@ -8,7 +8,7 @@ export default {
 export const Default = () => (
   <DiseaseOverview
     selectedDisease=""
-    setSelectedDisease={() => console.log('test')}
+    setSelectedDisease={(test: string) => console.log('test')}
     toggleShowDetails={() => console.log('test')}
     diseaseOverview={[]}
   />

@@ -55,11 +55,8 @@ const FilterMenu = React.forwardRef(function FilterMenu(props: CustomMenuProps, 
 // TODO: more robust solution with e.g. Luxon https://moment.github.io/luxon/#/
 const calculateAge = (birthDateString: string) => {
   const today = new Date()
-  console.log(today)
   birthDateString = birthDateString.split('.').reverse().join('-') // convert German to ISO date format
   const birthDate = new Date(birthDateString)
-  console.log(birthDateString)
-  console.log(birthDate)
   let yearDifference = today.getFullYear() - birthDate.getFullYear()
   const monthDifference = today.getMonth() - birthDate.getMonth()
   // Did not have birthday in current year yet

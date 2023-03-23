@@ -224,7 +224,7 @@ export const getPractitionerByUUID = (
   )[],
   uuid: string,
 ) => {
-  practitioners.forEach((practitioner) => console.log(practitioner.fullUrl))
+  // practitioners.forEach((practitioner) => console.log(practitioner.fullUrl))
   return practitioners.find((practitioner) => practitioner.fullUrl === uuid)?.resource
 }
 
@@ -236,6 +236,20 @@ export const getPractitionerName = (
     practitioner.name,
   ) as Vaccination.V1_1_0.Profile.PractitionerName | Vaccination.V1_1_0.Profile.PractitionerAddendumName
   return practitionerName.text || '-'
+}
+
+export const getConditionDisease = (condition: Vaccination.V1_1_0.Profile.Condition) => {
+  const snomedCoding = ParserUtil.getSlice<Vaccination.V1_1_0.Profile.ConditionCodeSnomedCT>(
+    Vaccination.V1_1_0.Profile.ConditionCodeSnomedCT,
+    condition.code.coding,
+  )
+  if (snomedCoding && snomedCoding._display && snomedCoding._display.extension) {
+    const terminologyExtension = snomedCoding._display.extension[0] as TerminologyGerman
+    if (terminologyExtension.extension && terminologyExtension.extension[0].valueString) {
+      return terminologyExtension.extension[0].valueString || ''
+    }
+  }
+  return ''
 }
 
 export const getDiseaseOverview = (
@@ -252,16 +266,7 @@ export const getDiseaseOverview = (
     let targetDiseases: string[] = []
     let dateTime = '1970-01-01T00:00:00.000Z' // UTC dateTime of 0
     if (Vaccination.V1_1_0.Profile.Condition.is(record)) {
-      const snomedCoding = ParserUtil.getSlice<Vaccination.V1_1_0.Profile.ConditionCodeSnomedCT>(
-        Vaccination.V1_1_0.Profile.ConditionCodeSnomedCT,
-        record.code.coding,
-      )
-      if (snomedCoding && snomedCoding._display && snomedCoding._display.extension) {
-        const terminologyExtension = snomedCoding._display.extension[0] as TerminologyGerman
-        if (terminologyExtension.extension && terminologyExtension.extension[0].valueString) {
-          targetDiseases = [terminologyExtension.extension[0].valueString]
-        }
-      }
+      targetDiseases = [getConditionDisease(record)]
     } else {
       targetDiseases = getVaccinationTargetDiseases(record)
       dateTime = record.occurrenceDateTime
@@ -285,10 +290,4 @@ export const getDiseaseOverview = (
     ...value,
   }))
   return diseaseOverviewArray.sort((a, b) => new Date(b.lastRecord).getTime() - new Date(a.lastRecord).getTime())
-}
-
-export const filterByDisease = (records: Vaccination.V1_1_0.Profile.RecordPrime[], filterTargetDisease: string) => {
-  return records.filter((record) =>
-    getVaccinationTargetDiseases(record).some((currentTargetDisease) => currentTargetDisease === filterTargetDisease),
-  )
 }

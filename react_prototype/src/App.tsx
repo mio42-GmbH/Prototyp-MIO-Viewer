@@ -9,6 +9,8 @@ import {
   loadXMLData,
   getPractitionerEntries,
   getDiseaseOverview,
+  getVaccinationTargetDiseases,
+  getConditionDisease,
 } from './services/mioParser'
 import DiseaseOverview from './components/DiseaseOverview/DiseaseOverview'
 import DiseaseDetails from './components/DiseaseDetails/DiseaseDetails'
@@ -22,6 +24,13 @@ function App() {
   const [selectedDisease, setSelectedDisease] = useState('')
   const [patient, setPatient] = useState<Vaccination.V1_1_0.Profile.Patient | undefined>(undefined)
   const [records, setRecords] = useState<
+    (
+      | Vaccination.V1_1_0.Profile.RecordPrime
+      | Vaccination.V1_1_0.Profile.RecordAddendum
+      | Vaccination.V1_1_0.Profile.Condition
+    )[]
+  >([])
+  const [filteredRecords, setFilteredRecords] = useState<
     (
       | Vaccination.V1_1_0.Profile.RecordPrime
       | Vaccination.V1_1_0.Profile.RecordAddendum
@@ -44,6 +53,7 @@ function App() {
         setPatient(patientEntry)
         const loadedRecords = getRecords(xmlResponse)
         setRecords(loadedRecords)
+        setFilteredRecords(loadedRecords)
         const newDiseaseOverview = getDiseaseOverview(loadedRecords)
         setDiseaseOverview(newDiseaseOverview)
         const practitionerEntries = getPractitionerEntries(xmlResponse)
@@ -55,6 +65,28 @@ function App() {
     }
     loadData()
   }, [])
+
+  const recordIsForSelectedDisease = (
+    record:
+      | Vaccination.V1_1_0.Profile.RecordPrime
+      | Vaccination.V1_1_0.Profile.RecordAddendum
+      | Vaccination.V1_1_0.Profile.Condition,
+    selectedDiseaseToFilter: string,
+  ) => {
+    if (Vaccination.V1_1_0.Profile.RecordPrime.is(record) || Vaccination.V1_1_0.Profile.RecordAddendum.is(record)) {
+      return getVaccinationTargetDiseases(record).some(
+        (currentTargetDisease) => currentTargetDisease === selectedDiseaseToFilter,
+      )
+    }
+    const conditionDisease = getConditionDisease(record)
+    return conditionDisease === selectedDiseaseToFilter
+  }
+
+  const handleDiseaseSelection = (newSelectedDisease: string) => {
+    setSelectedDisease(newSelectedDisease)
+    setFilteredRecords([...records.filter((record) => recordIsForSelectedDisease(record, newSelectedDisease))])
+    setDiseaseOverview(getDiseaseOverview(filteredRecords))
+  }
 
   return (
     <>
@@ -70,14 +102,14 @@ function App() {
               <DiseaseOverview
                 diseaseOverview={diseaseOverview}
                 selectedDisease={selectedDisease}
-                setSelectedDisease={setSelectedDisease}
+                setSelectedDisease={(newSelectedDisease: string) => handleDiseaseSelection(newSelectedDisease)}
                 toggleShowDetails={() => setShowDetails(true)}
               ></DiseaseOverview>
               {showDetails && (
                 <div style={{ minWidth: '490px' }}>
                   <DiseaseDetails
                     practitionerEntries={practitionerEntries}
-                    records={records}
+                    records={filteredRecords}
                     toggleShowDetails={() => {
                       setShowDetails(false)
                       setSelectedDisease('')

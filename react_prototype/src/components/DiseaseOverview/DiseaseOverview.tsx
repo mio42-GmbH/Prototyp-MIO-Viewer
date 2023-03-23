@@ -15,7 +15,7 @@ interface DiseaseOverviewProps {
     recordCount: number
   }[]
   selectedDisease: string
-  setSelectedDisease: React.Dispatch<React.SetStateAction<string>>
+  setSelectedDisease: (newSelectedDisease: string) => void
   toggleShowDetails: () => void
 }
 
