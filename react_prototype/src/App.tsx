@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import VaccinationPassHeader from './components/VaccinationPassHeader/VaccinationPassHeader'
 import { MIOEntry, Vaccination } from '@kbv/mioparser'

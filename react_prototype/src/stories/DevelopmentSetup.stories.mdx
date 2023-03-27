@@ -1,0 +1,127 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta title="Entwicklung/Development Setup" />
+
+# Development Setup
+
+## English
+
+You can find the app resources in the `react-prototype` folder.
+It uses TypeScript and follows the default folder structure and style of a `create-react-app` project with components being used with `generate-react-cli`.
+
+The frontend is developed using:
+
+- NodeJs 18 LTS
+- Create-React-App with (react-scripts v5)
+- React 18
+- TypeScript 4.9
+- React-Bootstrap 2.6
+- Bootstrap 5
+- React Router 6
+- Generate React CLI 8
+
+Important Documentation:
+
+- Create-React-App (https://create-react-app.dev/docs/getting-started) for app setup and adding features
+- React Docs (https://beta.reactjs.org/)
+- React-Bootstrap (https://react-bootstrap.github.io/)
+- Bootstrap (https://getbootstrap.com/docs/5.2/getting-started/introduction/)
+- Bootstrap Icons (https://icons.getbootstrap.com/)
+- React Router (https://reactrouter.com/en/main)
+- Generate React CLI (https://github.com/arminbro/generate-react-cli)
+
+### SETUP
+
+#### NODEJS
+
+Install a recent version of NodeJs, download the LTS from here: https://nodejs.org/en/
+
+#### EDITOR
+
+For frontend development, we recommend using VSCode (https://code.visualstudio.com/download).
+
+#### EXTENSIONS:
+
+Please install Prettier - Code formatter (https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+Please install ESLint (https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+To automatically use Prettier as a formatter, the `.vscode/settings.json` is included
+For running the JavaScript Debugger the `.vscode/launch.json` is included
+Rules for Prettier and ESLint to work together neatly are configured in the `frontend/package.json`
+
+#### BROWSER PLUGIN (OPTIONAL)
+
+I recommend installing the React Developer Tools Plugin for your Browser of Choice:
+
+React Developer Tools for Chrome (https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
+React Developer Tools for Firefox (https://addons.mozilla.org/en-US/firefox/addon/react-devtools)
+
+### WORKFLOW
+
+Open the whole repository in your editor
+On first development session, install all dependencies navigating to the react-prototype folder with your terminal and run `npm install` in your terminal
+Run `npm run start` in your terminal for serving a development server with live reloading on your localhost, the app will open in your browser
+When editing the files, the browser page should update
+Create new components via the terminal, using `npx generate-react-cli component MyComponent` (First time running this might demand installing this tool)
+The new component is created in a folder with own CSS, Story and Testing file, please use these instead of overarching files
+To build, run `npm run build --prod`
+
+## DEUTSCH
+
+Die Ressourcen der React-App befinden sich im Ordner `react-prototype`.
+Die App verwendet TypeScript und folgt der Standard-Ordnerstruktur und dem Stil eines `create-react-app`-Projekts mit Komponenten, die mit `generate-react-cli` erstellt werden.
+
+Das Frontend wurde entwickelt mit:
+
+- NodeJs 18 LTS
+- Create-React-App with (react-scripts v5)
+- React 18
+- TypeScript 4.9
+- React-Bootstrap 2.6
+- Bootstrap 5
+- React Router 6
+- Generate React CLI 8
+
+Wichtige Dokumentation:
+
+- Create-React-App (https://create-react-app.dev/docs/getting-started) for app setup and adding features
+- React Docs (https://beta.reactjs.org/)
+- React-Bootstrap (https://react-bootstrap.github.io/)
+- Bootstrap (https://getbootstrap.com/docs/5.2/getting-started/introduction/)
+- Bootstrap Icons (https://icons.getbootstrap.com/)
+- React Router (https://reactrouter.com/en/main)
+- Generate React CLI (https://github.com/arminbro/generate-react-cli)
+
+### SETUP
+
+#### NODEJS
+
+Installieren Sie eine aktuelle Version von NodeJs. Wir empfehlen den Download der LTS-Version von der offiziellen Webseite: https://nodejs.org/en/
+
+#### EDITOR
+
+Für die Frontend-Entwicklung empfehlen wir die Verwendung von VSCode (https://code.visualstudio.com/download).
+
+#### ERWEITERUNGEN
+
+Bitte installieren Sie Prettier - Code formatter (https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+Bitte installieren Sie ESLint (https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+Um Prettier automatisch als Formatierer zu verwenden, ist die Datei `.vscode/settings.json` enthalten
+Zum Starten des JavaScript-Debuggers ist die Datei `.vscode/launch.json` enthalten
+Regeln für das Zusammenspiel von Prettier und ESLint werden in der `frontend/package.json` konfiguriert
+
+#### BROWSER-PLUGIN (OPTIONAL)
+
+Ich empfehle, das React Developer Tools Plugin für den Browser Ihrer Wahl zu installieren:
+
+React Developer Tools für Chrome (https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
+React-Entwicklerwerkzeuge für Firefox (https://addons.mozilla.org/en-US/firefox/addon/react-devtools)
+
+### ARBEITSABLAUF
+
+Öffnen Sie das gesamte Repository in Ihrem Editor
+Installieren Sie in der ersten Entwicklungssitzung alle Abhängigkeiten, indem Sie mit Ihrem Terminal zum Ordner react-prototype navigieren und `npm install` in Ihrem Terminal ausführen
+Führen Sie `npm run start` in Ihrem Terminal aus, um einen Entwicklungsserver mit Live-Reloading auf Ihrem Localhost zu bedienen, die App wird in Ihrem Browser geöffnet
+Wenn Sie die Dateien bearbeiten, sollte die Browserseite aktualisiert werden.
+Erstellen Sie neue Komponenten über das Terminal, indem Sie `npx generate-react-cli component MyComponent` verwenden (wenn Sie dies zum ersten Mal tun, müssen Sie möglicherweise dieses Tool installieren)
+Die neue Komponente wird in einem Ordner mit eigener CSS-, Story- und Testing-Datei erstellt, bitte verwenden Sie diese anstelle der übergreifenden Dateien
+Um die Komponente zu erstellen, führen Sie `npm run build --prod` aus.

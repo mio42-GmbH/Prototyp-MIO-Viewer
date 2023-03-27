@@ -16,26 +16,23 @@ interface VaccinationPassHeaderProps {
 
 type CustomToggleProps = {
   children?: React.ReactNode
-  onClick?: (event: React.MouseEvent<SVGSVGElement, MouseEvent>) => unknown
+  onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => unknown
 }
 
-const FilterDropDownToggle = React.forwardRef(function CustomToggle(
-  props: CustomToggleProps,
-  ref: React.Ref<SVGSVGElement>,
-) {
-  return (
-    <MenuLogo
-      role="button"
-      ref={ref}
-      onClick={(e) => {
-        e.preventDefault()
-        if (props.onClick) {
-          props.onClick(e)
-        }
-      }}
-    />
-  )
-})
+const FilterDropDownToggle = React.forwardRef((props: CustomToggleProps, ref: React.Ref<HTMLDivElement>) => (
+  <div
+    role="button"
+    ref={ref}
+    onClick={(e) => {
+      e.preventDefault()
+      if (props.onClick) {
+        props.onClick(e)
+      }
+    }}
+  >
+    <MenuLogo />
+  </div>
+))
 
 type CustomMenuProps = {
   children?: React.ReactNode
@@ -44,13 +41,11 @@ type CustomMenuProps = {
   labeledBy?: string
 }
 
-const FilterMenu = React.forwardRef(function FilterMenu(props: CustomMenuProps, ref: React.Ref<HTMLDivElement>) {
-  return (
-    <div ref={ref} style={props.style} className={props.className} aria-labelledby={props.labeledBy}>
-      <FilterCard></FilterCard>
-    </div>
-  )
-})
+const FilterMenu = React.forwardRef((props: CustomMenuProps, ref: React.Ref<HTMLDivElement>) => (
+  <div ref={ref} style={props.style} className={props.className} aria-labelledby={props.labeledBy}>
+    <FilterCard></FilterCard>
+  </div>
+))
 
 // TODO: more robust solution with e.g. Luxon https://moment.github.io/luxon/#/
 const calculateAge = (birthDateString: string) => {
