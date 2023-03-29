@@ -1,11 +1,11 @@
-# Prototyp-MIO-Anzeige-Impfpass-JSSPA (Deutsch)
+# Anzeige-MIO-Impfpass (Deutsch)
 
 Dies ist das Repository für den JavaScript SPA Prototypen für die Anzeige des MIO Impfpass.
 Es handelt sich bei diesem Prototypen um eine ReactJs-App, welche MIO-Daten aus statischen XML-Dateien einliest.
 Für das Einlesen der MIO-Daten wird intern der MIOParser genutzt, die Darstellung nutzt Bootstrap.
 
 Diese README soll einen Überblick über die wichtigsten technischen Informationen zur Nutzung der App geben.
-Weitere Informationen finden Sie in unserer [Storybook-Dokumentation](https://mio42-gmbh.github.io/Prototyp-MIO-Anzeige-Impfpass-JSSPA)
+Weitere Informationen finden Sie in unserer [Storybook-Dokumentation](https://mio42-gmbh.github.io/Anzeige-MIO-Impfpass)
 
 ## Nutzung der Statischen App (Production Build) 
 
@@ -130,14 +130,14 @@ Die Dateien werden in den `react_prototype/dist` Ordner erzeugt.
 Standardmäßig werden die MIO-Beispieldateien in diesen Ordner kopiert.
 Sie können diese aus dem `dist` Ordner löschen und die `config.json` für Ihre eigene Daten anpassen.
 
-# Prototyp-MIO-Anzeige-Impfpass-JSSPA (English)
+# Anzeige-MIO-Impfpass (English)
 
 This is the repository for the JavaScript SPA prototype for the visualization of the MIO Vaccination Pass.
 This prototype consists of a ReactJs application reading MIO data from static XML files.
 The data is read using the MIO Parser package, the visualization is leveraging Bootstrap.
 
 This README shall present an overview of the most important technical information for using the application.
-You can find further information and guides in our [storybook documentation](https://mio42-gmbh.github.io/Prototyp-MIO-Anzeige-Impfpass-JSSPA)
+You can find further information and guides in our [storybook documentation](https://mio42-gmbh.github.io/Anzeige-MIO-Impfpass)
 
 ## Using the Static App (Production Build)
 
