@@ -1,0 +1,41 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta title="Entwicklung/Development Workflow" />
+
+# Development Workflow
+
+Für die lokale Entwicklung werden beim Prototypen [Vite](https://vitejs.dev/), [http-server](https://www.npmjs.com/package/http-server) sowie [generate-react-cli](https://github.com/arminbro/generate-react-cli) verwendet.
+
+## Lokales Ausführen der Applikation
+
+Öffnen Sie ein Terminal / eine Kommandozeile und navigieren Sie in den Repository Ordner (Oberstes Level, *nicht* im `react_prototype` Ordner).
+Starten Sie einen HTTP-Datei-Server, z.B. via `npx http-server`.
+Der HTTP-Datei-Server macht die MIO-Beispieldateien während der Entwicklung für die Applikation verfügbar.
+
+Öffnen Sie ein zweites Terminal / eine zweite Kommandozeile und navigieren Sie in den `react_prototype` Ordner.
+Falls noch nicht geschehen, installieren Sie einmalig alle Dependencies mit `npm install`.
+Starten Sie den Entwicklungsserver mit `npm run dev`
+
+Die React-App sollte auf einem lokalen Port verfügbar sein.
+
+## Bearbeiten der Applikation
+
+Öffnen Sie das gesamte Repository in Ihrem Editor.
+Zum Ausführen der Applikation, folgen Sie dem vorherigen Abschnitt.
+
+Wenn Sie die Dateien bearbeiten, sollte die Web-Applikation in Ihrem Browser automatisch aktualisiert werden.
+
+Sie können neue Komponenten über das Terminal erstellen, indem Sie `npx generate-react-cli component MyComponent` verwenden.
+Beim ersten Mal, müssen Sie möglicherweise `generate-react-cli` installieren.
+Die neue Komponente wird in einem Ordner mit eigener SCSS- und TSX-Datei erstellt und kann dort bearbeitet werden.
+
+## Erzeugen der Statischen Anwendungsdateien (Production Build)
+
+Führen Sie `npm run build` aus.
+Die Dateien werden in den `react_prototype/dist` Ordner erzeugt.
+Standardmäßig werden die MIO-Beispieldateien in diesen Ordner kopiert.
+Sie können diese aus dem `dist` Ordner löschen und die `config.json` für Ihre eigene Daten anpassen.
+
+<br/>
+**Nächste Seite**<br/>
+[Dependencies](../?path=/docs/entwicklung-dependencies--docs)

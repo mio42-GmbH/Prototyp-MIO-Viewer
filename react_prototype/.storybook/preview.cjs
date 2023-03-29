@@ -8,7 +8,22 @@ export const parameters = {
   },
   options: {
     storySort: {
-      order: ['Hintergrund', 'Entwicklung', ['Development Setup', 'Arbeit mit Github', 'Komponentenbasiertes Arbeiten', 'MIO Parser'], 'Example']
+      order: [
+        'Einleitung', [
+          'Hintergrund MIO Anzeigen',
+          'Prototyp MIO Anzeige Impfpass'
+        ],
+        'Nutzung & Integration',
+        'Entwicklung', [
+          'Development Setup',
+          'Development Workflow',
+          'Dependencies',
+          'Arbeit mit Github',
+          'Komponentenbasiertes Arbeiten',
+          'MIO Parser'
+        ],
+        'Komponenten'
+      ]
     }
   }
 }

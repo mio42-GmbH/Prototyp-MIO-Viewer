@@ -1,0 +1,33 @@
+import { Meta } from "@storybook/addon-docs";
+
+<Meta title="Entwicklung/MIO Parser" />
+
+# Integration des MIO Parsers
+
+Die KBV hat einen MIO Parser entwickelt, welcher als TypeScript Package eingebunden werden kann.
+Der Quellcode sowie die Dokumentation zur Nutzung sind im [MIO Parser GitHub Repository verfügbar](https://github.com/kassenaerztliche-bundesvereinigung/MIOParser).
+
+Im MIO-Anzeige Prototypen ist der MIO Parser für das Einlesen der MIO Dateien integriert.
+Die Funktionalitäten für das Lesen und Arbeiten mit den FHIR-Ressourcen (im Rahmen der MIO Parser Funktionalitäten) sind im Prototypen im Service `src/services/mioParser.tsx` gebündelt und werden in den Komponenten nach Bedarf importiert.
+
+Die Typen im MIO Parser sind basierend auf der FHIR-Spezifikation hierarchisch aufgebaut.
+Für den Prototypen zum MIO Impfpass 1.1.0 sind alle Typen im Modul `Vaccination.V1_1_0` enthalten.
+Welche Typen im MIO Parser verfügbar sind, ist durch die Editor-Integration von TypeScript in den meisten Editoren gut untersuchbar.
+
+## Konfiguration des Pfades zu den einzulesenden Daten
+
+Die App-Komponente (App.tsx) liest beim Start der React-App einmalig eine Konfigurationsdatei ein (config.json), welche im `public` Ordner liegt.
+Diese Konfigurationsdatei enthält den Pfad zu dein einzulesenden Daten. Aktuell wird ein einzelnes Bundle eingelesen, künftig können mehrere Bundles eingelesen werden (beispielsweise alle xml Dateien im Ordner). Hersteller können diese Konfigurationsdatei anpassen, um den Pfad zu einzulesenden Dateien zu ändern, jedoch sollten die Daten im "public" Ordner enthalten sein und der Pfad relativ zum "public" Ordner sein.
+
+## Einlesen der Daten durch den MIO Parser
+
+Nachdem die App Komponente (App.tsx) die Konfigurationsdatei eingelesen hat, werden die XML-Daten entsprechend dem in der Konfiguration angegebenen Pfad per fetch() Funktion geladen.
+Es wird somit erwartet, dass die Daten auf dem Server der Web-App verfügbar sind.
+
+Anschließend werden nacheinander zunächst das komplette Bundle geladen und durch den MIO Parser eingelesen, anschließend wird der Patient extrahiert, gefolgt von den RecordPrime-Einträgen. Damit dies automatisch beim Start der Komponente geschieht und das Laden der Daten die Komponente zum erneuten Rendern bringt (visuelles Neuladen, damit die Daten korrekt in die Anzeige eingefügt werden), wird dies im "useEffect" Hook der React Komponente ausgeführt. Die Daten werden mit "useState" ReactHooks im State der Komponente gespeichert. Mehr zu ReactHooks hier: https://reactjs.org/docs/hooks-intro.html
+
+<img src="./useEffect.PNG" alt="useEffect für Laden der Daten in React" />
+
+Ähnlich ist die Verwendung der Patientendaten in der Vaccination-Header Komponente:
+
+<img src="./header.PNG" alt="Header image für MIO Parser" />

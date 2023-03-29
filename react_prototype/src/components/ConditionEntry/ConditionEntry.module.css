@@ -1,0 +1,19 @@
+.entry-title {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 19px;
+}
+
+.entry-title.condition {
+    color: #FF9900;
+}
+
+.iconBackdrop {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+}
+
+.iconBackdrop.condition {
+    background: #FF9900;
+}

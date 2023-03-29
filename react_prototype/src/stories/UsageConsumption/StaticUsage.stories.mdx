@@ -1,0 +1,37 @@
+import { Meta } from "@storybook/addon-docs";
+
+<Meta title="Nutzung & Integration/Nutzung der Statischen Applikation" />
+
+# Nutzung der Statischen Applikation (Production Build) 
+
+Die einfachste Nutzung der App ist über die statischen HTML, JS und CSS Dateien.
+Dafür enthält das Repository den Production Build des Prototypen in der ZIP-Datei: `mio-impfpass-anzeige-build.zip`
+Diese Dateien können wie herkömmliche Web-Apps bzw. Webseiten eingebunden oder gehostet werden.
+
+## Lesen der MIO-Daten
+
+In der ZIP-Datei sind neben der statischen App MIO-Beispieldateien im `data` Ordner enthalten.
+Welche Dateien von der App gelesen werden sollen, kann in der `config.json` in folgendem Format angegeben werden:
+
+```
+{
+    "XML_DATA": [
+        "/path/to/MIO_Bundle1.xml",
+        "/path/to/MIO_Bundle2.xml",
+        ...
+    ]
+}
+```
+
+Somit können die Beispieldaten leicht ersetzt werden.
+
+Für das Einlesen der Dateien, nutzt die Applikation den MIO Parser. <br/>
+[Mehr zum MIO Parser hier](?path=/docs/entwicklung-mio-parser--docs)
+
+## Anpassen der Darstellung / des Designs
+
+Ein konfigurierbares Design ist noch nicht umgesetzt, jedoch über CSS-Variablen für eine künftige Version vorgesehen.
+
+<br/>
+**Nächste Seite**<br/>
+[Development Setup](../?path=/docs/entwicklung-development-setup--docs)

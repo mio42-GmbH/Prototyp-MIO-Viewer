@@ -1,0 +1,54 @@
+import { Meta } from "@storybook/addon-docs";
+
+<Meta title="Entwicklung/Komponentenbasiertes Arbeiten" />
+
+# Komponentenbasiertes Arbeiten
+
+Eine Zielstellung der Visualisierungen von MIOs ist eine konsistente Designerfahrung für Nutzer über die verschiedenen MIOs.
+Dafür haben wir uns entschieden, eine übergreifende Designbibliothek mit wiederverwendbaren Elementen und Komponenten zu entwickeln.
+
+Dementsprechend ist die technische Lösung komponentenbasiert und mit Fokus auf Wiederverwendbarkeit entwickelt.
+
+Folgend wird ein Überblick über die Arbeit mit Komponenten gegeben.
+
+## Erstellen einer Komponente
+
+Eine Komponente kann per Terminal-Befehl erstellt werden. Dafür sollte das Terminal in den "react-prototype" Ordner navigiert werden. Anschließend kann folgender Befehl genutzt werden:
+
+<code>npx generate-react-cli component MyComponent</code>
+
+Anschließend wird ein Unterordner für die Komponente im Ordner "components" erstellt.
+Dieser Unterordner sieht wie folgt aus:
+
+<img
+  src="./componentDirectory.png"
+  alt="Struktur des Ordners einer React Komponente"
+/>
+
+Die Dateien haben folgende Zwecke:
+
+\*.scss: Hier werden Styles (CSS-Klassen und Regeln, beispielsweise Farben und Abstände) für diese Komponente definiert. Die Regeln in dieser Datei sind nicht global sondern nur für die Komponente gültig. Globale Styles können in der "index.css" Datei im "src" Ordner definiert werden.
+
+<strong>
+  *.tsx: Hauptdatei der Komponente, hier ist der Platz für die React-Logik der
+  Komponente
+</strong>
+
+## Struktur einer Komponente
+
+In unserem Projekt nutzen wir "Functional Components". Das bedeutet, dass es keine Klasse ("class") pro Komponente gibt, sondern eine Komponente schlicht eine Methode/Funktion ist.
+
+Die \*.tsx Datei einer Komponente ist wie folgt strukturiert:
+
+<img src="./componentStructure.png" alt="Struktur einer React Komponente" />
+
+In dem obigen Beispiel ist zu sehen, wie Daten in die Komponente hineingegeben werden können.
+In diesem Fall wird ein String als "text" Property hineingegeben und im JSX (HTML+JS) Part der Komponente eingesetzt. Dafür werden geschweifte Klammern innerhalb der HTML Struktur genutzt und die entsprechende Variable eingesetzt.
+
+Diese Komponente kann nun in anderen Komponenten (sowie in der App Komponente auf dem höchsten Level) importiert und verwendet werden:
+
+<img src="./componentUse.png" alt="Nutzung einer React Komponente" />
+
+<br/>
+**Nächste Seite**<br/>
+[MIO Parser](../?path=/docs/entwicklung-mio-parser--docs)
