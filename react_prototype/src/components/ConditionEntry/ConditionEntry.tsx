@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react'
 import { Row, Col, Collapse } from 'react-bootstrap'
 import { Vaccination } from '@kbv/mioparser'
-import { styles } from './ConditionEntry.module.css'
+import './ConditionEntry.scss'
 import Information from '../Information/Information'
 import InformationHeading from '../InformationHeading/InformationHeading'
 import { ReactComponent as IllnessLogo } from '../../assets/icons/illness.svg'
@@ -22,7 +22,7 @@ const ConditionEntry: FC<ConditionEntryProps> = (props: ConditionEntryProps) => 
       <div className="ConditionEntry" data-testid="ConditionEntry">
         <Row>
           <Col xs={2} className="align-items-center ps-4">
-            <div className={`${styles.iconBackdrop} condition d-flex align-items-center justify-content-center`}>
+            <div className="iconBackdrop condition d-flex align-items-center justify-content-center">
               <IllnessLogo className="h-50" />
             </div>
           </Col>
