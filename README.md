@@ -10,7 +10,7 @@ Weitere Informationen finden Sie in unserer [Storybook-Dokumentation](https://mi
 ## Nutzung der Statischen App (Production Build) 
 
 Die einfachste Nutzung der App ist über die statischen HTML, JS und CSS Dateien.
-Dafür enthält das Repository den Production Build des Prototypen in der ZIP-Datei: mio-impfpass-anzeige-build.zip
+Dafür enthält das Repository den Production Build des Prototypen in der ZIP-Datei: `mio-impfpass-anzeige-build.zip`
 Diese Dateien können wie herkömmliche Web-Apps bzw. Webseiten eingebunden oder gehostet werden.
 
 ### Lesen der MIO-Daten
@@ -142,7 +142,7 @@ You can find further information and guides in our [storybook documentation](htt
 ## Using the Static App (Production Build)
 
 The most straightforward use of the application is via the static build files (HTML, JS, CSS).
-Therefore the repository contains the production build in the zip-file: mio-impfpass-anzeige-build.zip
+Therefore the repository contains the production build in the zip-file: `mio-impfpass-anzeige-build.zip`
 These files can be used for hosting and integration like regular web-apps and websites.
 
 ### Reading the MIO Data
