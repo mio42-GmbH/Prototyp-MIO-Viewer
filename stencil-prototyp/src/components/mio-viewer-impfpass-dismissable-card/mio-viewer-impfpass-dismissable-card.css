@@ -1,0 +1,11 @@
+:host {
+  display: block;
+  position: fixed;
+  z-index: 10;
+  padding: 4px;
+  border-radius: 4px;
+  border: 1px solid var(--mio-base-border);
+  background: var(--mio-base-white);
+
+  transform: translate(-0%, 100%);
+}

@@ -1,0 +1,3 @@
+try{
+var _=__STORYBOOKADDONS__,{addons:o,types:c,mockChannel:d}=__STORYBOOKADDONS__;var b=__STORYBOOKTHEMING__,{CacheProvider:S,ClassNames:u,Global:I,ThemeProvider:x,background:D,color:y,convert:C,create:a,createCache:N,createGlobal:R,createReset:k,css:v,darken:B,ensure:G,ignoreSsrWarning:K,isPropValid:Y,jsx:A,keyframes:M,lighten:P,styled:E,themes:H,typography:j,useTheme:w,withTheme:z}=__STORYBOOKTHEMING__;var s=a({base:"light",brandTitle:"Der Digitale Impfpass",brandUrl:"https://mio42-gmbh.github.io/Anzeige-MIO-Impfpass",brandImage:"./Logo_Impfpass.svg",brandTarget:"_self"});o.setConfig({enableShortcuts:!1,theme:s});
+}catch(e){ console.error("[Storybook] One of your manager-entries failed: " + import.meta.url, e); }

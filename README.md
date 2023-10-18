@@ -1,91 +1,84 @@
 # Anzeige-MIO-Impfpass (Deutsch)
 
-Dies ist das Repository für den JavaScript SPA Prototypen für die Anzeige des MIO Impfpass.
-Es handelt sich bei diesem Prototypen um eine ReactJs-App, welche MIO-Daten aus statischen XML-Dateien einliest.
-Für das Einlesen der MIO-Daten wird intern der MIOParser genutzt, die Darstellung nutzt Bootstrap.
+Dies ist das Repository für den JavaScript Prototypen für die Anzeige des MIO Impfpass.
+Es handelt sich bei diesem Prototypen um eine Webkomponente basierend auf den aktuellen Webstandards HTML5 und JavaScript, welche MIO-Daten aus Base64-codierten Datenstring einliest.
+Für das Einlesen der MIO-Daten wird intern der MIOParser genutzt.
+Falls eine flexiblere Nutzung bzw. Einbindung im System gewünscht wird, so können ebenfalls die Unterkomponenten einzeln genutzt werden.
+Diese werden als eine Bibliothek von Webkomponenten ebenfalls mitgeliefert.
+
+Für die Entwicklung der Webkomponenten wird TypeScript mit StencilJS genutzt.
 
 Diese README soll einen Überblick über die wichtigsten technischen Informationen zur Nutzung der App geben.
 Weitere Informationen finden Sie in unserer [Storybook-Dokumentation](https://mio42-gmbh.github.io/Anzeige-MIO-Impfpass)
 
-## Nutzung der Statischen App (Production Build) 
+## Verwendete Bibliotheken / Pakete (Dependencies)
 
-Die einfachste Nutzung der App ist über die statischen HTML, JS und CSS Dateien.
-Dafür enthält das Repository den Production Build des Prototypen in der ZIP-Datei: `mio-impfpass-anzeige-build.zip`
-Diese Dateien können wie herkömmliche Web-Apps bzw. Webseiten eingebunden oder gehostet werden.
+Dependencies der Komponenten:
+- [StencilJS](http://stenciljs.com) 4.0
+- [MIO Parser](https://github.com/kassenaerztliche-bundesvereinigung/MIOParser) 1.8
 
-### Lesen der MIO-Daten
-
-In der ZIP-Datei sind neben der statischen App MIO-Beispieldateien im `data` Ordner enthalten.
-Welche Dateien von der App gelesen werden sollen, kann in der `config.json` in folgendem Format angegeben werden:
-
-```
-{
-    "XML_DATA": [
-        "/path/to/MIO_Bundle1.xml",
-        "/path/to/MIO_Bundle2.xml",
-        ...
-    ]
-}
-```
-
-Somit können die Beispieldaten leicht ersetzt werden.
-
-### Anpassen der Darstellung / des Designs
-
-Ein konfigurierbares Design ist noch nicht umgesetzt, jedoch über CSS-Variablen für eine künftige Version vorgesehen.
-
-
-## Ausführen und Entwicklung der React-App
-
-Die Ressourcen der React-App befinden sich im Ordner `react_prototype`.
-Die App verwendet TypeScript und folgt der Standardstruktur eines Vite-Projektes mit Komponenten, die mit `generate-react-cli` erstellt wurden.
-
-### Verwendete Bibliotheken / Pakete (Dependencies)
-
-Dependencies der App:
-- React 18
-- React-Bootstrap 2
-- Bootstrap 5
-- MIO Parser 1.8
+Die Webkomponenten werden von StencilJS in eine Bibliothek von Standard-Webkomponenten (HTML5 + JS) kompiliert und können als solche genutzt werden.
 
 Dependencies für die Entwicklung:
 - NodeJs 18 LTS
-- Vite 4
 - TypeScript 4.9
-- Generate React CLI 8
-- ESLint 8 & Prettier 2
-- SASS (CSS Pre-Processor)
+- [Jest] (https://jestjs.io) 27
+- Jest-CLI 27
+- Puppeteer 20
 
-Die technische Dokumentation wurde mit StorybookJS umgesetzt.
+Die technische Dokumentation wurde mit [StorybookJS](https://storybook.js.org/docs/react/get-started/install/) umgesetzt.
 
-#### Dokumentation der verwendeten Bibliotheken / Pakete
+Für eine komplette Übersicht der Peer-Dependencies der einzelnen Bibliotheken liefern wir die `stencil-prototyp/package-lock.json` mit.
 
-- [Vite](https://vitejs.dev/guide) (für App-Setup, Development Server und Build) 
-- [React Docs](https://react.dev)
-- [React-Bootstrap](https://react-bootstrap.github.io/)
-- [Bootstrap](https://getbootstrap.com/docs/5.2/getting-started/introduction/)
-- [Bootstrap Icons](https://icons.getbootstrap.com/)
-- [Generate React CLI](https://github.com/arminbro/generate-react-cli)
-- [MIO Parser](https://github.com/kassenaerztliche-bundesvereinigung/MIOParser)
-- [StorybookJS](https://storybook.js.org/docs/react/get-started/install/)
+## Nutzung der Viewer Webkomponente als Blackbox (Production Build) 
 
-### Technisches Setup
+Die einfachste Nutzung des MIO Viewer ist über die statische Webkomponente `mio-viewer-impfpass`.
+Dafür enthält das Repository den Production Build des Prototypen in der ZIP-Datei: `mio-viewer-impfpass-build.zip`
+Diese Webkomponente kann wie herkömmliche Komponenten in einer Web-App bzw. Webseiten eingebunden oder gehostet werden. Eine Einbindung in andere Stacks / Systemumgebungen ist über entsprechende Web-Interfaces ebenfalls möglich.
 
-#### NodeJS
+### Übergeben der MIO-Daten
+
+In der ZIP-Datei ist neben den Komponenten ein MIO-Beispiel als Base64-codierter String in `example-mio.txt` enthalten.
+Dieser String kann der Webkomponente als Wert für die Property `base-6-4-fhir-data` folgenderweise übergeben werden:
+
+```
+<mio-viewer-impfpass base-6-4-fhir-data="<base64StringGoesHere>" />
+```
+
+Die Webkomponente erwartet als Eingabe ein FHIR-Bundle konform zum Profil `KBV_PR_MIO_Vaccination_Bundle_Entry`. Dieses kann von dem Primärsystem in eigener Weise geladen und in Base64 codiert werden und dann an die Komponenten übergeben werden.
+
+### Anpassen der Darstellung / des Designs
+
+Das Design kann per CSS-Variablen konfiguriert werden.
+Die aktuelle Auswahl und Standardwerte der angebotenen CSS-Variable finden Sie in `stencil-prototyp/src/global.css`
+
+## Nutzung der Unterkomponenten als Webkomponenten
+
+Die Viewer-Komponente agiert als eine übergreifende Rahmenkomponente, welche Unterkomponenten enthält.
+Diese wurden ebenfalls mit StencilJS erstellt und können einzeln genutzt oder angepasst werden.
+Die Verwendung der Komponenten ist equivalent zur Verwendung der Viewer-Komponente selbst.
+Die genauen Properties, Parameter und Funktionen der Unterkomponenten, finden Sie in unserer [technischen Dokumentation](https://storybook.js.org/docs/react/get-started/install/)
+
+
+## Weiterentwicklung / Development Setup
+
+Die folgenden Abschnitte sind vor allem relevant für die aktive Entwicklung / Build der Komponenten von einer eigenen Maschine.
+
+### NodeJS
 
 Installieren Sie eine aktuelle Version von NodeJs. Wir empfehlen den Download der LTS-Version von der [offiziellen Webseite](https://nodejs.org/en/)
 
-#### Installieren der Dependencies
+### Installieren der Dependencies
 
-Navigieren Sie mit dem Terminal / der Kommandozeile in den `react_prototype` Ordner.
+Navigieren Sie mit dem Terminal / der Kommandozeile in den `stencil-prototyp` Ordner.
 Führen Sie anschließend einmalig `npm install` aus.
 Es sollten alle benötigten Pakete installiert werden.
 
-#### Editor
+### Editor
 
 Für die Frontend-Entwicklung empfehlen wir die Verwendung von [VSCode](https://code.visualstudio.com/download)
 
-#### VS Code Erweiterungen (Empfohlen)
+### VS Code Erweiterungen (Empfohlen)
 
 Für einheitlichen Code-Stil empfehlen wir die Nutzung von Formatierungs- und Linting-Plugins.
 Bitte installieren Sie [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
@@ -93,24 +86,13 @@ Bitte installieren Sie [ESLint](https://marketplace.visualstudio.com/items?itemN
 Um Prettier automatisch als Formatierer zu verwenden, ist die Datei `.vscode/settings.json` im Repository enthalten.
 Regeln für das Zusammenspiel von Prettier und ESLint werden in der `frontend/package.json` konfiguriert
 
-#### Browser Plugin (Empfohlen)
-
-Wir empfehlen, das React Developer Tools Plugin für den Browser Ihrer Wahl zu installieren:
-
-[React Developer Tools für Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
-[React Developer Tools für Firefox](https://addons.mozilla.org/en-US/firefox/addon/react-devtools)
-
 ### Lokales Ausführen der Applikation
 
-Öffnen Sie ein Terminal / eine Kommandozeile und navigieren Sie in den Repository Ordner (Oberstes Level, *nicht* im `react_prototype` Ordner).
-Starten Sie einen HTTP-Datei-Server, z.B. via `npx http-server`.
-Der HTTP-Datei-Server macht die MIO-Beispieldateien während der Entwicklung für die Applikation verfügbar.
-
-Öffnen Sie ein zweites Terminal / eine zweite Kommandozeile und navigieren Sie in den `react_prototype` Ordner.
+Öffnen Sie ein Terminal / eine Kommandozeile und navigieren Sie in den Ordner `stencil-prototyp`.
 Falls noch nicht geschehen, installieren Sie einmalig alle Dependencies mit `npm install`.
-Starten Sie den Entwicklungsserver mit `npm run dev`
+Starten Sie den Entwicklungsserver mit `npm start`
 
-Die React-App sollte auf einem lokalen Port verfügbar sein.
+Die StencilJS-App sollte auf `localhost:3333` verfügbar sein.
 
 ### Entwicklung - Arbeitsablauf
 
@@ -119,105 +101,98 @@ Zum Ausführen der Applikation, folgen Sie dem vorherigen Abschnitt.
 
 Wenn Sie die Dateien bearbeiten, sollte die Web-Applikation in Ihrem Browser automatisch aktualisiert werden.
 
-Sie können neue Komponenten über das Terminal erstellen, indem Sie `npx generate-react-cli component MyComponent` verwenden.
-Beim ersten Mal, müssen Sie möglicherweise `generate-react-cli` installieren.
-Die neue Komponente wird in einem Ordner mit eigener SCSS- und TSX-Datei erstellt und kann dort bearbeitet werden.
+Sie können neue Komponenten über das Terminal erstellen, indem Sie `stencil generate` verwenden.
+Für weitere Informationen empfehlen wir die Dokumentation der [Stencil CLI](https://stenciljs.com/docs/cli)
 
 ### Erzeugen der Statischen Anwendungsdateien (Production Build)
 
-Führen Sie `npm run build` aus.
-Die Dateien werden in den `react_prototype/dist` Ordner erzeugt.
-Standardmäßig werden die MIO-Beispieldateien in diesen Ordner kopiert.
-Sie können diese aus dem `dist` Ordner löschen und die `config.json` für Ihre eigene Daten anpassen.
+Aktuell werden für den Build durch den MIOParser 6GB benötigt.
+Wir arbeiten an der Optimierung dessen.
+Führen Sie `npm --max_old_space_size=6144 run build` aus.
+Wir haben alle `output_targets` von StencilJS aktiviert: `dist`, `dist-custom-elements`, `www` und hoffen damit Flexibilität in der Nutzung zu ermöglichen.
+Mehr Informationen zu den Output Targets hier: https://stenciljs.com/docs/output-targets
+Die Dateien werden in den `stencil-prototyp/dist` sowie in den `stencil-prototyp/www` Ordner erzeugt.
 
 # Anzeige-MIO-Impfpass (English)
 
-This is the repository for the JavaScript SPA prototype for the visualization of the MIO Vaccination Pass.
-This prototype consists of a ReactJs application reading MIO data from static XML files.
-The data is read using the MIO Parser package, the visualization is leveraging Bootstrap.
+This is the repository for the JavaScript prototype for the visualization of the MIO Vaccination Pass.
+This prototype consists of a web component based on current HTML5 and JavaScript web standards reading MIO data from a base64 encoded data string.
+The data is read using the MIO Parser package.
+In case you require more flexibility in the use or integration in your system, you can also use the sub-components individually.
+These are also delivered as a library of web components.
+
+For the development of the webcomponents, we used TypeScript and StencilJS
 
 This README shall present an overview of the most important technical information for using the application.
 You can find further information and guides in our [storybook documentation](https://mio42-gmbh.github.io/Anzeige-MIO-Impfpass)
 
-## Using the Static App (Production Build)
+## Used Libraries / Packages (Dependencies)
 
-The most straightforward use of the application is via the static build files (HTML, JS, CSS).
-Therefore the repository contains the production build in the zip-file: `mio-impfpass-anzeige-build.zip`
-These files can be used for hosting and integration like regular web-apps and websites.
+Dependencies of the webcomponents:
+- [StencilJS](http://stenciljs.com) 4.0
+- [MIO Parser](https://github.com/kassenaerztliche-bundesvereinigung/MIOParser) 1.8
 
-### Reading the MIO Data
-
-Within the zip-file, apart from the application data you can find MIO example data in the `data` folder.
-Which files are to be read by the app can be configured in the `config.json` in the following format:
-
-```
-{
-    "XML_DATA": [
-        "/path/to/MIO_Bundle1.xml",
-        "/path/to/MIO_Bundle2.xml",
-        ...
-    ]
-}
-```
-
-The example data can thus easily be replaced
-
-### Adapting the Design / Theme
-
-A configurable theme is not yet implemented but planned in upcoming versions.
-
-## Running and Developing the React App
-
-The ressources of the react app are located inside the `react_prototype` folder.
-The app uses TypeScript and follows the typical structure of a project set up with Vite.
-The components are in separate folders, generated by `generate-react-cli`.
-
-### Used Libraries / Packages (Dependencies)
-
-Dependencies of the app:
-- React 18
-- React-Bootstrap 2
-- Bootstrap 5
-- MIO Parser 1.8
+The webcomponents are being compiled by StencilJS to a library of standard webcomponents (HTML5 + JS) and can be used as such.
 
 Dependencies for development:
 - NodeJs 18 LTS
-- Vite 4
 - TypeScript 4.9
-- Generate React CLI 8
-- ESLint 8 & Prettier 2
-- SASS (CSS Pre-Processor)
+- [Jest] (https://jestjs.io) 27
+- Jest-CLI 27
+- Puppeteer 20
 
-The technical documentation is made available using StorybookJS.
+The technical documentation was realized with [StorybookJS](https://storybook.js.org/docs/react/get-started/install/).
 
-#### Documentation on the used Libraries / Packages
+For a complete overview of peer dependencies of libraries and packages, please refer to the `stencil-prototyp/package-lock.json`.
 
-- [Vite](https://vitejs.dev/guide) (for app setup, development server and build) 
-- [React Docs](https://react.dev)
-- [React-Bootstrap](https://react-bootstrap.github.io/)
-- [Bootstrap](https://getbootstrap.com/docs/5.2/getting-started/introduction/)
-- [Bootstrap Icons](https://icons.getbootstrap.com/)
-- [Generate React CLI](https://github.com/arminbro/generate-react-cli)
-- [MIO Parser](https://github.com/kassenaerztliche-bundesvereinigung/MIOParser)
-- [StorybookJS](https://storybook.js.org/docs/react/get-started/install/)
+## Using the Viewer Webcomponent as a Blackbox (Production Build)
 
-### Technisches Setup
+The most straightforward use of the application is via the static webcomponent `mio-viewer-impfpass`.
+Therefore the repository contains the production build in the zip-file: `mio-viewer-impfpass-build.zip`
+This webcomponent can be integrated or hosted in webapps or webpages like regular webcomponents. An integration into other tech stacks or systems is also possible via web interfaces.
 
-#### NodeJS
+### Handover of MIO Data
+
+Within the zip-file, apart from the components, you can find a MIO example as a base64-encoded string in `example-mio.txt`.
+This string can be handed to the webcomponent as a value for the property `base-6-4-fhir-data` in the following manner:
+```
+<mio-viewer-impfpass base-6-4-fhir-data="<base64StringGoesHere>" />
+```
+
+The webcomponent expects a FHIR bundle conforming with the profile `KBV_PR_MIO_Vaccination_Bundle_Entry` as input. This can be loaded and transformed to base64 by the integrating system in a custom manner and handed to the webcomponent.
+
+### Adapting the Design / Theme
+
+The design can be adapted using CSS-variables.
+The currently offered variables and their default values can be found in:
+`stencil-prototyp/src/global.css`
+
+## Using the Subcomponents as Webcomponents
+
+The viewer component acts as an overarching component, containing further subcomponents.
+These have also been created using StencilJS and can be used and adapted individually.
+The consumption of these components is equivalent to using the overarching viewer component.
+You can find the specific properties, parameters and functionalities of the subcomponents in our [technical Documentation](https://storybook.js.org/docs/react/get-started/install/)
+
+## Development Setup
+
+The following sections are primarily targeted at development / building the components on your own machine.
+
+### NodeJS
 
 Install a recent version of NodeJs, we recommend downloading the LTS from [the official page](https://nodejs.org/en/)
 
-#### Installing the Dependencies
+### Installing the Dependencies
 
-Using the terminal, navigate into the `react_prototype` folder.
+Using the terminal, navigate into the `stencil-prototyp` folder.
 Afterwards run the following command: `npm install` .
 All dependencies should be installed.
 
-#### Editor
+### Editor
 
 For frontend development, we recommend using [VSCode](https://code.visualstudio.com/download).
 
-#### VS Code Extensions (Recommended)
+### VS Code Extensions (Recommended)
 
 For uniform coding style we recommend using formatting and linting-plugins in VS Code.
 Please install [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
@@ -225,24 +200,13 @@ Please install [ESLint](https://marketplace.visualstudio.com/items?itemName=dbae
 To automatically use Prettier as a formatter, the `.vscode/settings.json` file is included in the repository.
 Rules for Prettier and ESLint to work together neatly are configured in the `frontend/package.json`
 
-#### Browser Plugin (Recommended)
-
-We recommend installing the React Developer Tools Plugin for your Browser of Choice:
-
-[React Developer Tools for Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
-[React Developer Tools for Firefox](https://addons.mozilla.org/en-US/firefox/addon/react-devtools)
-
 ### Running the App Locally
 
-Open the terminal and navigate into the root repository folder (*not* into the `react_prototype` folder).
-Start a HTTP-file-server, e.g. via `npx http-server`.
-The HTTP-file-server hosts the MIO example data during the development of the application.
-
-Open a second terminal and navigate into the `react_prototype` folder.
+Open a terminal and navigate into the `stencil-prototyp` folder.
 If not done yet, install all dependencies using `npm install`
-Start the development server using `npm run dev`
+Start the development server using `npm start`
 
-The react app should be available on a port on localhost.
+The StencilJS app should be available at `localhost:3333`.
 
 ### Development - Workflow
 
@@ -251,13 +215,14 @@ To run the application, please follow the previous section.
 
 When editing the files, the application running in the browser should update automatically.
 
-You can create new components via the terminal by running `npx generate-react-cli component MyComponent`
-At first execution, you migh be prompted to install `generate-react-cli` .
-The new component will be created in an own folder with SCSS and TSX file and can be adapted using these files.
+You can create new components via the terminal by running `stencil generate` .
+For further information, please refer to the documentation of [Stencil CLI](https://stenciljs.com/docs/cli)
 
 ### Generate Static Application Files (Production Build)
 
-To build the app, run `npm run build`.
-The files will be generated in the `react_prototype/dist` folder.
-Per default, the MIO example data will also be copied into this folder.
-You may delete it from the `dist` folder and adapt the `config.json` for your own files.
+Currently, building the components from source requires 6GB due to the bundling of the MIOParser.
+We are working on optimization for this.
+To build the components, run `npm --max_old_space_size=6144 run build`.
+We activated all `output_targets` of StencilJS: `dist`, `dist-custom-elements`, `www` with the hope of offering the maximum flexibility for you.
+More on the output targets can be found here: https://stenciljs.com/docs/output-targets
+The files are being generated into the `stencil-prototyp/dist` as well as the `stencil-prototyp/www` folder.

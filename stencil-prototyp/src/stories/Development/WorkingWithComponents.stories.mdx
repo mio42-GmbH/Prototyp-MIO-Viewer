@@ -1,0 +1,89 @@
+import { Meta } from "@storybook/addon-docs";
+
+<Meta title="Entwicklung/Komponentenbasiertes Arbeiten" />
+
+# Komponentenbasiertes Arbeiten
+
+Eine Zielstellung der Visualisierungen von MIOs ist eine konsistente Designerfahrung für Nutzer über die verschiedenen MIOs.
+Dafür haben wir uns entschieden, eine übergreifende Designbibliothek mit wiederverwendbaren Elementen und Komponenten zu entwickeln.
+
+Dementsprechend ist die technische Lösung komponentenbasiert und mit Fokus auf Wiederverwendbarkeit entwickelt.
+
+Folgend wird ein Überblick über die Arbeit mit Komponenten gegeben.
+
+## Erstellen einer Webkomponente mit StencilJS
+
+Eine Komponente kann per Terminal-Befehl erstellt werden. Dafür sollte das Terminal in den `stencil-prototyp` Ordner navigiert werden. Anschließend kann folgender Befehl genutzt werden:
+
+`stencil generate`
+
+Anschließend wird ein Unterordner für die Komponente im Ordner "components" mit einer CSS und einer TSX Datei erstellt.
+
+Die Dateien haben folgende Zwecke:
+
+\*.css: Hier werden Styles (CSS-Klassen und Regeln, beispielsweise Farben und Abstände) für diese Komponente definiert. Die Regeln in dieser Datei sind nicht global sondern nur für die Komponente gültig. Globale Styles können in der "global.css" Datei im `src/global` Ordner definiert werden.
+
+<strong>
+  *.tsx: Hauptdatei der Webkomponente, hier ist der Platz für die Logik der
+  Webkomponente
+</strong>
+
+## Struktur einer Komponente
+
+In unserem Projekt nutzen wir "Functional Components". Das bedeutet, dass es keine Klasse ("class") pro Komponente gibt, sondern eine Komponente schlicht eine Methode/Funktion ist.
+
+Die \*.tsx Datei einer Komponente ist wie folgt strukturiert:
+
+```
+import { Component, Host, h, getAssetPath, Prop } from "@stencil/core";
+
+const infoBox = getAssetPath("../../assets/infoBox.svg");
+@Component({
+  tag: "mio-viewer-impfpass-condition-information",
+  styleUrl: "mio-viewer-impfpass-condition-information.css",
+  shadow: true,
+  assetsDirs: ["../../assets"],
+})
+export class MioViewerInformation {
+  @Prop() infoText: string;
+  @Prop() infoHead: string;
+
+  render() {
+    return (
+      <Host>
+        <div class="mio-viewer-infoBox">
+          <div class="mio-viewer-infoBoxTitel">{this.infoHead}</div>
+          <div class="mio-viewer-textInfoBox">{this.infoText}</div>
+        </div>
+        <div>
+          <img
+            class="mio-viewer-infoBoxArrow"
+            src={infoBox}
+          />
+        </div>
+      </Host>
+    );
+  }
+}
+```
+
+In dem obigen Beispiel ist zu sehen, wie Daten in die Komponente hineingegeben werden können.
+In diesem Fall werden Strings als "infoText" und "infoHead" Properties hineingegeben und im TSX (HTML+TS) Part der Komponente eingesetzt.
+Dafür werden geschweifte Klammern innerhalb der HTML Struktur genutzt und die entsprechende Variable eingesetzt.
+
+Diese Komponente kann nun in anderen Komponenten (sowie in der übergreifenden Viewer-Komponente auf dem höchsten Level) importiert und verwendet werden:
+
+```
+{this.showInformation && (
+  <mio-viewer-impfpass-condition-information
+    class="additional-class"
+    infoText={exampleInput1}
+    infoHead={exampleInput2}
+  />
+)}
+```
+
+<br />
+**Nächste Seite**
+<br />
+[MIO Parser](../?path=/docs/entwicklung-mio-parser--docs)

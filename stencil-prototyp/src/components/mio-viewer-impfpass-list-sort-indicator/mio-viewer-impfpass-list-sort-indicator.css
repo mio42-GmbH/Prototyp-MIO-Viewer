@@ -1,0 +1,10 @@
+:host {
+  display: flex;
+  border-color: white;
+  flex-flow: column nowrap;
+  gap: 3px;
+}
+
+img#mio-viewer-img {
+  flex-shrink: 0;
+}

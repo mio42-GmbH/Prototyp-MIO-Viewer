@@ -1,0 +1,47 @@
+import { Meta } from "@storybook/addon-docs";
+
+<Meta title="Entwicklung/Development Setup" />
+
+# Development Setup
+
+Die Ressourcen der Applikation befinden sich im Ordner `stencil-prototyp`.
+Die App wurde mit NodeJs, StencilJS und TypeScript entwickelt.
+Das Projekt folgt der Standardstruktur eines Stencil-Projektes mit Komponenten, die mit `stencil generate` erstellt wurden.
+Für das Einlesen der MIO-Daten wird intern der MIO Parser genutzt.
+
+Die folgenden Abschnitte sind vor allem relevant für die aktive Entwicklung / Build der Komponenten von einer eigenen Maschine.
+
+## NodeJS
+
+Installieren Sie eine aktuelle Version von NodeJs. Wir empfehlen den Download der LTS-Version von der [offiziellen Webseite](https://nodejs.org/en/)
+
+## Installieren der Dependencies
+
+Navigieren Sie mit dem Terminal / der Kommandozeile in den `stencil-prototyp` Ordner.
+Führen Sie anschließend einmalig `npm install` aus.
+Es sollten alle benötigten Pakete installiert werden.
+
+## Editor
+
+Für die Frontend-Entwicklung empfehlen wir die Verwendung von [VSCode](https://code.visualstudio.com/download)
+
+## VS Code Erweiterungen (Empfohlen)
+
+Für einheitlichen Code-Stil empfehlen wir die Nutzung von Formatierungs- und Linting-Plugins.
+Bitte installieren Sie [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+Bitte installieren Sie [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+Um Prettier automatisch als Formatierer zu verwenden, ist die Datei `.vscode/settings.json` im Repository enthalten.
+Regeln für das Zusammenspiel von Prettier und ESLint werden in der `frontend/package.json` konfiguriert
+
+## Lokales Ausführen der Applikation
+
+Öffnen Sie ein Terminal / eine Kommandozeile und navigieren Sie in den Ordner `stencil-prototyp`.
+Falls noch nicht geschehen, installieren Sie einmalig alle Dependencies mit `npm install`.
+Starten Sie den Entwicklungsserver mit `npm start`
+
+Die StencilJS-App sollte auf `localhost:3333` verfügbar sein.
+
+<br />
+**Nächste Seite**
+<br />
+[Development Workflow](../?path=/docs/entwicklung-development-workflow--docs)

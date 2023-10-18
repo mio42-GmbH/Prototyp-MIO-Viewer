@@ -1,0 +1,41 @@
+:host {
+  border: 1px solid var(--mio-base-border);
+  border-radius: 4px;
+  background-color: var(--mio-base-white);
+  padding: 24px;
+
+  font-family: var(--mio-font-family);
+}
+
+.mio-viewer-impfpass-header {
+  display: flex;
+  justify-content: space-between;
+
+  padding-bottom: 8px;
+
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.mio-viewer-impfpass-closeLogo {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.mio-viewer-impfpass-closeLogo img {
+  cursor: pointer;
+}
+
+div#mio-viewer-impfpass-record-list > .mio-viewer-impfpass-record-list-entry {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--mio-base-border);
+}
+
+div#mio-viewer-impfpass-record-list
+  > .mio-viewer-impfpass-record-list-entry:last-child {
+  padding-top: 16px;
+  padding-bottom: 0px;
+  border-bottom: none;
+}

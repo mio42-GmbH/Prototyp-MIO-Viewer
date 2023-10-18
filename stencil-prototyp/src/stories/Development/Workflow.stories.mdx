@@ -1,0 +1,37 @@
+import { Meta } from "@storybook/addon-docs";
+
+<Meta title="Entwicklung/Development Workflow" />
+
+# Development Workflow
+
+### Lokales Ausführen der Applikation
+
+Öffnen Sie ein Terminal / eine Kommandozeile und navigieren Sie in den Ordner `stencil-prototyp`.
+Falls noch nicht geschehen, installieren Sie einmalig alle Dependencies mit `npm install`.
+Starten Sie den Entwicklungsserver mit `npm start`
+
+Die StencilJS-App sollte auf `localhost:3333` verfügbar sein.
+
+## Entwicklung - Arbeitsablauf
+
+Öffnen Sie das gesamte Repository in Ihrem Editor.
+Zum Ausführen der Applikation, folgen Sie dem vorherigen Abschnitt.
+
+Wenn Sie die Dateien bearbeiten, sollte die Web-Applikation in Ihrem Browser automatisch aktualisiert werden.
+
+Sie können neue Komponenten über das Terminal erstellen, indem Sie `stencil generate` verwenden.
+Für weitere Informationen empfehlen wir die Dokumentation der [Stencil CLI](https://stenciljs.com/docs/cli)
+
+## Erzeugen der Statischen Anwendungsdateien (Production Build)
+
+Aktuell werden für den Build durch den MIOParser 6GB benötigt.
+Wir arbeiten an der Optimierung dessen.
+Führen Sie `npm --max_old_space_size=6144 run build` aus.
+Wir haben alle `output_targets` von StencilJS aktiviert: `dist`, `dist-custom-elements`, `www` und hoffen damit Flexibilität in der Nutzung zu ermöglichen.
+Mehr Informationen zu den Output Targets hier: https://stenciljs.com/docs/output-targets
+Die Dateien werden in den `stencil-prototyp/dist` sowie in den `stencil-prototyp/www` Ordner erzeugt.
+
+<br />
+**Nächste Seite**
+<br />
+[Dependencies](../?path=/docs/entwicklung-dependencies--docs)

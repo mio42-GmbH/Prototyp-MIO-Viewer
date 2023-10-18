@@ -1,0 +1,43 @@
+:root {
+  --mio-base-white: #ffffff;
+  --mio-base-background: #f8fafc;
+  --mio-base-border: #cfd7e2;
+  --mio-impfpass-antibodies: #00b012;
+  --mio-impfpass-illness: #ff9900;
+  --mio-impfpass-vaccine: #9747ff;
+  --mio-content-interactive: #37a1dd;
+  --mio-content-interactive-disabled: #d8ebf5;
+  --mio-content-paragraph-disabled: #acb7c6;
+  --mio-content-paragraph-primary: #334155;
+  --mio-content-paragraph-secondary: #64748b;
+  --mio-content-title: #0f172a;
+  --mio-background-note: #d4f0ff;
+  --mio-background-selected: #eff8fc;
+
+  /* don't forget to add font-face definitions for custom fonts */
+  --mio-font-family: "Nunito Sans", sans-serif;
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/nunito-sans-v15-latin-regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../fonts/nunito-sans-v15-latin-600.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/nunito-sans-v15-latin-700.woff2") format("woff2");
+}

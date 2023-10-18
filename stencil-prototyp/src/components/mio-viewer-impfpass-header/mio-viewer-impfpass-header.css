@@ -1,0 +1,91 @@
+:host {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: left;
+
+  padding: 4px;
+  border-bottom: 1px solid var(--mio-base-border);
+  background-color: var(--mio-base-white);
+
+  font-family: var(--mio-font-family);
+}
+
+div#mio-viewer-header-app-logo {
+  width: 15%;
+  min-width: min-content;
+}
+
+div#mio-viewer-header-app-logo img {
+  align-self: flex-start;
+  padding-top: 20px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+div#mio-viewer-header-main {
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  padding-bottom: 16px;
+}
+
+div#mio-viewer-header-patient {
+  padding-top: 37px;
+}
+
+div#mio-viewer-header-title {
+  font-size: 26px;
+  font-weight: 700;
+  padding-bottom: 7px;
+}
+
+div#mio-viewer-header-subtitle {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: left;
+}
+
+span.mio-viewer-header-detail {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-end;
+  padding-right: 20px;
+}
+
+span.mio-viewer-header-detail-description {
+  min-width: min-content;
+  font-size: 12px;
+  font-weight: 400;
+
+  padding-right: 4px;
+  padding-bottom: 1.5px;
+
+  color: var(--mio-content-paragraph-secondary);
+}
+
+span.mio-viewer-header-detail-content {
+  min-width: min-content;
+  font-size: 14px;
+  font-weight: 400;
+  white-space: nowrap;
+
+  color: var(--mio-content-paragraph-primary);
+}
+
+div#mio-viewer-extra-menu {
+  display: flex;
+  align-items: flex-end;
+
+  align-self: flex-end;
+  height: 100%;
+  min-height: min-content;
+
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+div#mio-viewer-extra-menu > img {
+  align-self: flex-end;
+  padding: 0px;
+}

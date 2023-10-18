@@ -1,0 +1,48 @@
+:host {
+  font-family: var(--mio-font-family);
+}
+
+.mio-viewer-infoBox,
+.mio-viewer-infoBox * {
+  box-sizing: border-box;
+}
+
+.mio-viewer-infoBox {
+  background: var(--mio-base-white);
+  border-radius: 4px;
+  border-style: solid;
+  border-color: var(--mio-base-border);
+  border-width: 1px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 288px;
+  position: relative;
+}
+
+.mio-viewer-infoBoxTitel {
+  color: var(--mio-content-title);
+  text-align: left;
+  font-weight: 700;
+  font-size: 14px;
+  position: relative;
+}
+
+.mio-viewer-textInfoBox {
+  color: var(--mio-content-paragraph-primary);
+  text-align: left;
+  font-weight: 400;
+  font-size: 14px;
+  position: relative;
+  align-self: stretch;
+}
+
+.mio-viewer-infoBoxArrow {
+  position: absolute;
+  left: 160px;
+  top: 74.5px;
+  overflow: visible;
+}

@@ -1,0 +1,125 @@
+:host {
+  display: block;
+  background-color: white;
+  border: 1px solid var(--mio-base-border);
+  border-radius: 4px;
+  font-family: var(--mio-font-family);
+}
+
+.mio-viewer-closeIcon {
+  cursor: pointer;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.mio-viewer-container {
+  display: flex;
+  position: relative;
+}
+
+.mio-viewer-column {
+  flex: 2;
+  max-width: 400px;
+  box-sizing: border-box;
+  padding: 10px;
+  position: relative;
+}
+
+.mio-viewer-head {
+  color: var(--mio-content-paragraph-primary);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.mio-viewer-secondHead {
+  color: var(--mio-content-paragraph-primary);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 10px;
+  padding-bottom: 40px;
+}
+
+.mio-viewer-practitionerTitel {
+  color: var(--mio-content-title);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.mio-viewer-practitionerTitel {
+  color: var(--mio-content-title);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  gap: 15px;
+}
+
+.mio-viewer-textHead {
+  color: var(--mio-content-paragraph-secondary);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  gap: 4px;
+}
+
+.mio-viewer-text {
+  color: var(--mio-content-paragraph-primary);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  gap: 15px;
+}
+
+.mio-viewer-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 4px 4px 0 0;
+}
+
+.mio-viewer-container:last-child::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background-color: var(--mio-base-border);
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 0;
+}
+
+.mio-viewer-button {
+  background-color: #37a1dd;
+  color: #fff;
+  padding: 10px 20px;
+  border: 1px solid var(--mio-base-border);
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.mio-viewer-line {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.mio-viewer-line hr {
+  border-radius: 4px;
+  border: 1px solid var(--mio-base-border);
+  background: var(--mio-base-border);
+}

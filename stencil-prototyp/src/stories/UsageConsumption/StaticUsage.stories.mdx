@@ -1,0 +1,38 @@
+import { Meta } from "@storybook/addon-docs";
+
+<Meta title="Nutzung & Integration/Nutzung der Webkomponente" />
+
+# Nutzung der Webkomponenten
+
+## Nutzung der Viewer Webkomponente als Blackbox (Production Build)
+
+Die einfachste Nutzung des MIO Viewer ist über die statische Webkomponente `mio-viewer-impfpass`.
+Dafür enthält das Repository den Production Build des Prototypen in der ZIP-Datei: `mio-viewer-impfpass-build.zip`
+Diese Webkomponente kann wie herkömmliche Komponenten in einer Web-App bzw. Webseiten eingebunden oder gehostet werden. Eine Einbindung in andere Stacks / Systemumgebungen ist über entsprechende Web-Interfaces ebenfalls möglich.
+
+### Übergeben der MIO-Daten
+
+In der ZIP-Datei ist neben den Komponenten ein MIO-Beispiel als Base64-codierter String in `example-mio.txt` enthalten.
+Dieser String kann der Webkomponente als Wert für die Property `base-6-4-fhir-data` folgenderweise übergeben werden:
+
+```
+<mio-viewer-impfpass base-6-4-fhir-data="<base64StringGoesHere>" />
+```
+
+Die Webkomponente erwartet als Eingabe ein FHIR-Bundle konform zum Profil `KBV_PR_MIO_Vaccination_Bundle_Entry`. Dieses kann von dem Primärsystem in eigener Weise geladen und in Base64 codiert werden und dann an die Komponenten übergeben werden.
+
+### Anpassen der Darstellung / des Designs
+
+Das Design kann per CSS-Variablen konfiguriert werden.
+Die aktuelle Auswahl und Standardwerte der angebotenen CSS-Variable finden Sie in `stencil-prototyp/src/global.css`
+
+## Nutzung der Unterkomponenten als Webkomponenten
+
+Die Viewer-Komponente agiert als eine übergreifende Rahmenkomponente, welche Unterkomponenten enthält.
+Diese wurden ebenfalls mit StencilJS erstellt und können einzeln genutzt oder angepasst werden.
+Die Verwendung der Komponenten ist equivalent zur Verwendung der Viewer-Komponente selbst.
+
+<br />
+**Nächste Seite**
+<br />
+[Development Setup](../?path=/docs/entwicklung-development-setup--docs)

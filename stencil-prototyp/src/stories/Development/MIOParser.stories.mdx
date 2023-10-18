@@ -1,0 +1,45 @@
+import { Meta } from "@storybook/addon-docs";
+
+<Meta title="Entwicklung/MIO Parser" />
+
+# Integration des MIO Parsers
+
+Die KBV hat einen MIO Parser entwickelt, welcher als TypeScript Package eingebunden werden kann.
+Der Quellcode sowie die Dokumentation zur Nutzung sind im [MIO Parser GitHub Repository verfügbar](https://github.com/kassenaerztliche-bundesvereinigung/MIOParser).
+
+Im MIO Viewer Prototypen ist der MIO Parser für das Einlesen der MIO Dateien integriert.
+Die Funktionalitäten für das Lesen und Arbeiten mit den FHIR-Ressourcen (im Rahmen der MIO Parser Funktionalitäten) sind im Prototypen in `src/utils/` gebündelt und werden in den Komponenten nach Bedarf importiert.
+
+Die Typen im MIO Parser sind basierend auf der FHIR-Spezifikation hierarchisch aufgebaut.
+Für den Prototypen zum MIO Impfpass 1.1.0 sind alle Typen im Modul `Vaccination.V1_1_0` enthalten.
+Welche Typen im MIO Parser verfügbar sind, ist durch die Editor-Integration von TypeScript in den meisten Editoren gut untersuchbar.
+
+## Übergabe der zu lesenden MIO Daten
+
+Die Webkomponente `mio-viewer-impfpass` liest beim Initialisieren die übergebenen MIO Daten als Base64 codierten String ein.
+Dieser String kann der Webkomponente als Wert für die Property `base-6-4-fhir-data` folgenderweise übergeben werden:
+
+```
+<mio-viewer-impfpass base-6-4-fhir-data="<base64StringGoesHere>" />
+```
+
+## Einlesen der Daten durch den MIO Parser
+
+Nachdem die Webkomponente den Daten-String eingelesen hat, werden die Daten decodiert und durch den MIO Parser eingelesen:
+
+Beispielhaft ist hier die Funktion `parseBase64FhirBundle` aus der `src/utils/bundleData.ts` abgebildet:
+
+```
+async function parseBase64FhirBundle(base64Data: string): Promise<BundleEntry> {
+  const xmlData = atob(base64Data);
+  const mioParser = new MIOParser();
+  const result: MIOParserResult = await mioParser.parseString(xmlData);
+  const mio = result.value;
+
+  if (Vaccination.V1_1_0.Profile.BundleEntry.is(mio)) {
+    return mio as BundleEntry;
+  } else {
+    throw new Error("Data was not a valid Vaccination Bundle");
+  }
+}
+```

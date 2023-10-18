@@ -1,0 +1,80 @@
+:host {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: start;
+
+  height: 100%;
+  width: 100%;
+
+  background-color: var(--mio-base-background);
+}
+
+div#mio-viewer-body {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: left;
+}
+
+div#mio-viewer-body-filler {
+  width: 15%;
+  min-width: 168px;
+}
+
+div#mio-viewer-body-container {
+  width: 70%;
+  align-self: center;
+
+  padding-top: 35px;
+}
+
+div#mio-viewer-menu-bar {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: right;
+  gap: 24px;
+
+  padding-bottom: 24px;
+}
+
+div#mio-viewer-search-menu {
+  display: flex;
+  align-items: flex-end;
+
+  align-self: flex-end;
+  height: 100%;
+  min-height: min-content;
+
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+div#mio-viewer-filter-menu {
+  display: flex;
+  align-items: flex-end;
+
+  align-self: flex-end;
+  height: 100%;
+  min-height: min-content;
+
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+
+div#mio-viewer-side-by-side-layout {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 16px;
+
+  width: 100%;
+}
+
+div#mio-viewer-side-by-side-layout > mio-viewer-impfpass-record-overview {
+  width: 100%;
+  min-width: min-content;
+  height: max-content;
+}
+div#mio-viewer-side-by-side-layout > mio-viewer-impfpass-record-list {
+  width: 100%;
+  min-width: min-content;
+  height: max-content;
+}
