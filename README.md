@@ -22,7 +22,7 @@ Die Webkomponenten werden von StencilJS in eine Bibliothek von Standard-Webkompo
 Dependencies für die Entwicklung:
 - NodeJs 18 LTS
 - TypeScript 4.9
-- [Jest] (https://jestjs.io) 27
+- [Jest](https://jestjs.io) 27
 - Jest-CLI 27
 - Puppeteer 20
 
@@ -35,6 +35,8 @@ Für eine komplette Übersicht der Peer-Dependencies der einzelnen Bibliotheken 
 Die einfachste Nutzung des MIO Viewer ist über die statische Webkomponente `mio-viewer-impfpass`.
 Dafür enthält das Repository den Production Build des Prototypen in der ZIP-Datei: `mio-viewer-impfpass-build.zip`
 Diese Webkomponente kann wie herkömmliche Komponenten in einer Web-App bzw. Webseiten eingebunden oder gehostet werden. Eine Einbindung in andere Stacks / Systemumgebungen ist über entsprechende Web-Interfaces ebenfalls möglich.
+
+**Beispielintegrationen sind im Ordner `example-integrations` enthalten. Wir werden diese fortlaufend erweitern.**
 
 ### Übergeben der MIO-Daten
 
@@ -137,7 +139,7 @@ The webcomponents are being compiled by StencilJS to a library of standard webco
 Dependencies for development:
 - NodeJs 18 LTS
 - TypeScript 4.9
-- [Jest] (https://jestjs.io) 27
+- [Jest](https://jestjs.io) 27
 - Jest-CLI 27
 - Puppeteer 20
 
@@ -150,6 +152,8 @@ For a complete overview of peer dependencies of libraries and packages, please r
 The most straightforward use of the application is via the static webcomponent `mio-viewer-impfpass`.
 Therefore the repository contains the production build in the zip-file: `mio-viewer-impfpass-build.zip`
 This webcomponent can be integrated or hosted in webapps or webpages like regular webcomponents. An integration into other tech stacks or systems is also possible via web interfaces.
+
+**Example integrations are available in the folder `example-integrations`. We will extend these over time.**
 
 ### Handover of MIO Data
 
